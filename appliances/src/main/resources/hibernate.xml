@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="jdbc.properties"></bean>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.databaseurl}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+	</bean>
+
+	<tx:annotation-driven proxy-target-class="true" />
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<!-- dao -->
+	<bean id="catalogDao" class="dao.implement.CatalogDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="accountDao" class="dao.implement.AccountDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="productDao" class="dao.implement.ProductDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="shoppingCartDao" class="dao.implement.ShoppingCartDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="shoppingCartDetailDao" class="dao.implement.ShoppingCartDetailDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- service-->
+	<bean id="accountService" class="service.implement.AccountServiceImpl" scope="prototype">
+		<property name="accountDao" ref="accountDao"/>
+	</bean>
+	<bean id="catalogService" class="service.implement.CatalogServiceImpl" scope="prototype">
+		<property name="catalogDao" ref="catalogDao"/>
+	</bean>
+	<bean id="productService" class="service.implement.ProductServiceImpl" scope="prototype">
+		<property name="productDao" ref="productDao"/>
+	</bean>
+	<bean id="shoppingCartService" class="service.implement.ShoppingCartServiceImpl" scope="prototype">
+		<property name="shoppingCartDao" ref="shoppingCartDao"/>
+	</bean>
+	<bean id="shoppingCartDetailService" class="service.implement.ShoppingCartDetailServiceImpl" scope="prototype">
+		<property name="shoppingCartDetailDao" ref="shoppingCartDetailDao"/>
+	</bean>
+</beans>
