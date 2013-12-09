@@ -1,10 +1,9 @@
 package pojo;
 
-// Generated Dec 6, 2013 8:18:51 PM by Hibernate Tools 3.4.0.CR1
+// Generated Dec 9, 2013 9:22:25 AM by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -125,7 +124,7 @@ public class Account implements java.io.Serializable {
 		return this.shoppingcarts;
 	}
 
-	public void setShoppingcarts(HashSet<Shoppingcart> shoppingcarts) {
+	public void setShoppingcarts(Set<Shoppingcart> shoppingcarts) {
 		this.shoppingcarts = shoppingcarts;
 	}
 
@@ -134,7 +133,7 @@ public class Account implements java.io.Serializable {
 		return this.userauths;
 	}
 
-	public void setUserauths(HashSet<Userauth> userauths) {
+	public void setUserauths(Set<Userauth> userauths) {
 		this.userauths = userauths;
 	}
 

@@ -1,13 +1,13 @@
 package pojo;
 
-// Generated Dec 6, 2013 8:18:51 PM by Hibernate Tools 3.4.0.CR1
+// Generated Dec 9, 2013 9:22:25 AM by Hibernate Tools 3.4.0.CR1
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -23,37 +23,46 @@ public class Userauth implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private UserauthId id;
+	private Integer id;
 	private Account account;
+	private String authority;
 
 	public Userauth() {
 	}
 
-	public Userauth(UserauthId id, Account account) {
-		this.id = id;
+	public Userauth(Account account, String authority) {
 		this.account = account;
+		this.authority = authority;
 	}
 
-	@EmbeddedId
-	@AttributeOverrides({
-			@AttributeOverride(name = "username", column = @Column(name = "Username", nullable = false, length = 31)),
-			@AttributeOverride(name = "authority", column = @Column(name = "Authority", nullable = false, length = 15)) })
-	public UserauthId getId() {
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "Id", unique = true, nullable = false)
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(UserauthId id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "Username", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "Username", nullable = false)
 	public Account getAccount() {
 		return this.account;
 	}
 
 	public void setAccount(Account account) {
 		this.account = account;
+	}
+
+	@Column(name = "Authority", nullable = false, length = 15)
+	public String getAuthority() {
+		return this.authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 
 }
