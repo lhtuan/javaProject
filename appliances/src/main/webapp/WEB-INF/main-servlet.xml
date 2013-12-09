@@ -15,7 +15,11 @@
 
 	<mvc:annotation-driven />
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-
+	
+	<mvc:interceptors>
+      <bean class="intercepter.Intercepter" />
+    </mvc:interceptors> 
+	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass">
