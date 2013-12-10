@@ -81,7 +81,7 @@ public class Shoppingcart implements java.io.Serializable {
 		this.orderDate = orderDate;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "shoppingcart")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "shoppingcart")
 	public Set<Shoppingcartdetail> getShoppingcartdetails() {
 		return this.shoppingcartdetails;
 	}

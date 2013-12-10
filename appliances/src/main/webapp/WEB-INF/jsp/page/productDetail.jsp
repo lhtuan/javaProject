@@ -49,7 +49,7 @@
                     
                   </li>                  
                   <li>
-                    <a href="#" class="add-to-cart clearfix">
+                    <a href="/appliances/cart/add?id=${product.id}&number=${number}" class="add-to-cart clearfix">
                       <span class="icon ir">Cart</span>
                       <span class="text">Thêm vào giỏ</span>
                     </a>

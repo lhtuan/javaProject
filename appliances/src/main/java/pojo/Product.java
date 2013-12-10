@@ -134,7 +134,7 @@ public class Product implements java.io.Serializable {
 		this.rateCount = rateCount;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
 	public Set<Shoppingcartdetail> getShoppingcartdetails() {
 		return this.shoppingcartdetails;
 	}

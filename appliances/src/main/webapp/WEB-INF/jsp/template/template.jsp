@@ -19,9 +19,13 @@
 	href="<c:url value='/resources/css/media-queries.css'/>">
 <link rel="stylesheet"
 	href="<c:url value='/resources/css/bootstrap.css'/>">
-
+<link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/jquery.confirm.css'/>">
 <script
 	src="<c:url value='/resources/js/vendor/modernizr-2.6.1.min.js'/>"></script>
+<script src="<c:url value='/resources/js/ajax.js'/>"></script>
+<script src="<c:url value='/resources/js/jquery-1.9.1.js'/>"></script>
+<script src="<c:url value='/resources/js/bootstrap.js'/>"></script>
 </head>
 <body>
 	<div class="top-bar">
@@ -31,19 +35,25 @@
 		<tiles:insertAttribute name="header" />
 	</header>
 	<hr>
-	<tiles:insertAttribute name="content"/>
-	
+	<tiles:insertAttribute name="content" />
+
 	<footer>
 		<tiles:insertAttribute name="footer" />
 	</footer>
+	<div id="dialog-confirm" title="Bạn có chắc muốn xóa?">
+		<p>
+			<span class="ui-icon ui-icon-alert"
+				style="float: left; margin: 0 7px 20px 0;"></span>Sản phẩm sẽ bị xóa khỏi giỏ hàng
+		</p>
+	</div>
 	<!-- 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script>
 		window.jQuery
 				|| document
 						.write("src=''<c:url value='/resources/js/vendor/jquery-1.8.2.min.js'/>'><\/script>")
 	</script> -->
-	<script src="<c:url value='/resources/js/vendor/jquery-1.8.2.min.js'/>"></script>
 	<script src="<c:url value='/resources/js/plugins.js'/>"></script>
 	<script src="<c:url value='/resources/js/main.js'/>"></script>
+	<script src="<c:url value='/resources/js/jquery.confirm.js'/>"></script>
 </body>
 </html>

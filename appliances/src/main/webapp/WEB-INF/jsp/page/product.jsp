@@ -30,7 +30,7 @@
 							<fmt:parseNumber var="page" integerOnly="true" type="number"
 								value="${searchCondition.page}" />
 							<c:if test="${page>1 && totalPage !=0}">
-								<li><a href="product?isKeepProduct=true&page=${page-1}"
+								<li><a href="/appliances/product?isKeepProduct=true&page=${page-1}"
 									class="arrow prev ir">Previous</a></li>
 							</c:if>
 							<c:forEach var="i" begin="1" end="${totalPage}">
@@ -38,11 +38,11 @@
 									<li class="current"><a href="">${i}</a></li>
 								</c:if>
 								<c:if test="${i != page}">
-									<li><a href="product?isKeepProduct=true&page=${i}">${i}</a></li>
+									<li><a href="/appliances/product?isKeepProduct=true&page=${i}">${i}</a></li>
 								</c:if>
 							</c:forEach>
 							<c:if test="${page<totalPage}">
-								<li><a href="product?isKeepProduct=true&page=${page+1}"
+								<li><a href="/appliances/product?isKeepProduct=true&page=${page+1}"
 									class="arrow next ir">Next</a></li>
 							</c:if>
 
@@ -58,7 +58,7 @@
 					<li class="span9">
 						<div class="row">
 							<div class="span3 desat photo-wrapper">
-								<a href="productDetail?id=${product.id}"> <img
+								<a href="/appliances/productDetail?id=${product.id}"> <img
 									src="<c:url value='${link}'/>" alt="" />
 								</a>
 							</div>
@@ -67,7 +67,7 @@
 								<hr />
 								<div class="row price-wrapper">
 									<div class="span2 clearfix">
-										<a href="cart/add?id=${product.id}&number=1" class="add-to-cart"> <span
+										<a href="/appliances/cart/add?id=${product.id}&number=1" class="add-to-cart"> <span
 											class="icon ir">Cart</span> <span class="text">Thêm
 												vào giỏ</span>
 										</a>

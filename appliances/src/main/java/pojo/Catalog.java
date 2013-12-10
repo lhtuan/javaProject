@@ -58,7 +58,7 @@ public class Catalog implements java.io.Serializable {
 		this.catalogName = catalogName;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "catalog")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "catalog")
 	public Set<Product> getProducts() {
 		return this.products;
 	}
