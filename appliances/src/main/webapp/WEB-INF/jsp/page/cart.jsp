@@ -7,37 +7,29 @@
         <table>
           <tr class="headers">
             <th class="alpha50 dark">
-              Article
+              Sản phẩm
             </th>
             <th class="alpha16">
-              Quantity
+             Số lượng
             </th>
             <th class="alpha16 dark">
-              Unit price
+              Giá
             </th>
             <th class="alpha16">
-              Price
+           		Thành tiền
             </th>
           </tr>
+          <c:forEach var="cartDetail" items="${cart.shoppingcartdetails}">
           <tr>
             <td class="article clearfix">
-              
+              <c:set var="link"
+						value="/resources/img/products/${cartDetail.product.productName}.jpg" />
               <figure>
-                <img src="<c:url value='/resources/img/ph/ph-also-1.png'/>" alt=""/>
+                <img src="<c:url value='${link}'/>" alt=""/>
               </figure>
               
               <div class="info-wrapper">
-                <h2>Men glass mode 2012</h2>
-                <div class="info">
-                  <p class="clearfix">
-                    <span>Size:</span>
-                    <span class="value">12</span>
-                  </p>
-                  <p class="clearfix">
-                    <span>Colour:</span>
-                    <span class="colour orange">Orange</span>
-                  </p>
-                </div>
+                <h2>${cartDetail.product.productName}</h2>
               </div>
               
             </td>
@@ -48,86 +40,33 @@
                   <div class="arrow plus gradient"><span class="ir">Plus</span></div>
                   <div class="arrow minus gradient"><span class="ir">Minus</span></div>
                 </div>
-                <input type="text" value="2"/>
+                <input type="text" value="${cartDetail.number}"/>
               </div>
               
             </td>
             <td class="price">
             
-              <span class="currency">$</span><span class="value">300</span>
+              </span><span class="value">${cartDetail.product.price}</span>
             
             </td>
             <td class="price dark">
             
-              <span class="currency">$</span><span class="value">600</span>
+              </span><span class="value">${cartDetail.product.price*cartDetail.number}</span>
             
             </td>
           </tr>
-          <tr>
-            <td class="article clearfix">
-              
-              <figure>
-                <img src="<c:url value='/resources/img/ph/ph-also-3.png'/>" alt=""/>
-              </figure>
-              
-              <div class="info-wrapper">
-                <h2>Men glass mode 2012</h2>
-                <div class="info">
-                  <p class="clearfix">
-                    <span>Size:</span>
-                    <span class="value">10</span>
-                  </p>
-                  <p class="clearfix">
-                    <span>Colour:</span>
-                    <span class="colour black">Black</span>
-                  </p>
-                </div>
-              </div>
-              
-            </td>
-            <td class="quantity dark">
-            
-              <div class="quant-input">
-                <div class="arrows">
-                  <div class="arrow plus gradient"><span class="ir">Plus</span></div>
-                  <div class="arrow minus gradient"><span class="ir">Minus</span></div>
-                </div>
-                <input type="text" value="1"/>
-              </div>
-              
-            </td>
-            <td class="price">
-            
-              <span class="currency">$</span><span class="value">200</span>
-            
-            </td>
-            <td class="price dark">
-            
-              <span class="currency">$</span><span class="value">200</span>
-            
-            </td>
-          </tr>
+          </c:forEach>
           <tr>
             <td colspan="2" class="empty">
             </td>
             <td colspan="2" class="total-wrapper">
-            
-              <div class="vat clearfix">
-                <div class="half-col">
-                  VAT
-                </div>
-                <div class="half-col">
-                  <span class="value">10</span>%
-                </div>
-              </div>
-              
               <div class="total clearfix">
                 <div class="half-col">
-                  Total
+                  Tổng cộng
                 </div>
                 <div class="half-col value-wrapper">
                   
-                  <span class="currency">$</span><span class="value">880</span>
+                  <span class="currency">$</span><span class="value">${total}</span>
                   
                 </div>
               </div>

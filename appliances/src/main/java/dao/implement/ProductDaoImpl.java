@@ -61,9 +61,6 @@ public class ProductDaoImpl extends BaseDao implements IProductDao {
 	@Transactional
 	public int countProducts(ProductSearchCondition searchCondition) {
 		int count = 0;
-		int page = Integer.parseInt(searchCondition.getPage());
-		int numberProductOfPage = Integer.parseInt(searchCondition
-				.getNumberProductOfPage());
 		String hql = "select count(*) from Product "
 				+ searchCondition.getConditionString();
 		try {
@@ -71,8 +68,6 @@ public class ProductDaoImpl extends BaseDao implements IProductDao {
 			if (searchCondition.getName() != null) {
 				query.setString(0, "%" + searchCondition.getName() + "%");
 			}
-			query.setFirstResult(numberProductOfPage * (page - 1));
-			query.setMaxResults(numberProductOfPage);
 			count = Integer.parseInt(query.list().get(0).toString());
 			LoggHelper.info("Get products success");
 		} catch (Exception ex) {

@@ -7,61 +7,34 @@
         
           <div class="span10">
             <div class="row">              
-              <div class="span5 gallery">
+              <div class="span4 gallery">
                 <div class="gallery-sub-wrap clearfix">
-                 
                   <ul class="rr images">
                     <li class="current gal-1">
-                      <img src="<c:url value='/resources/img/ph/ph-details-big-1.png'/>" alt=""/>
-                    </li>
-                    <li class="gal-2">
-                      <img src="<c:url value='/resources/img/ph/ph-details-small-2.png'/>" width="286" alt=""/>
-                    </li>
-                    <li class="gal-3">
-                      <img src="<c:url value='/resources/img/ph/ph-details-big-1.png'/>" alt=""/>
-                    </li>
-                    <li class="gal-4">
-                      <img src="<c:url value='/resources/img/ph/ph-details-small-2.png'/>" width="286" alt=""/>
+                    <c:set var="link"
+						value="/resources/img/products/${product.productName}.jpg" />
+                      <img src="<c:url value='${link}'/>" alt=""/>
                     </li>
                   </ul>
                 </div>
               </div>
               
-              <div class="span5 product">
-                <h1>Green camouflage utility</h1>
+              <div class="span6 product">
+                <h1>${product.productName}</h1>
                 <p class="description">
-                  Vestibulum ante ipsum primis in faucibus orci luctus et 
-                  ultrrd rices posuere cubilia Curae; Aenean eleifend laoreet.
+                  ${product.description}
                 </p>
                 
                 <hr/>
                 
                 <ul class="rr prefs clearfix">
-                  <li class="size clearfix">
-                    <span class="info-title">Size:</span>
-                    <ul class="rr clearfix">
-                      <li>10</li>
-                      <li class="current">12</li>
-                      <li>13</li>
-                      <li>14</li>
-                      <li>15</li>
-                    </ul>
-                  </li>
                   <li class="avail clearfix">
-                    <span class="info-title">Availability:</span>
+                    <span class="info-title">Trạng thái:</span>
                     <ul class="rr clearfix">
-                      <li class="value">In stock</li>
+                      <li class="value">Còn hàng</li>
                     </ul>
                   </li>
-                  <li class="colour-wrapper clearfix last">
-                    <span class="info-title">Colour:</span>
-                    <ul class="rr clearfix">
-                      <li class="colour orange">Orange</li>
-                      <li class="colour teal">Teal</li>
-                      <li class="colour pink">Pink</li>
-                      <li class="colour black">Black</li>
-                    </ul>
-                  </li>
+                  
                 </ul>
                 
                 <hr/>
@@ -69,38 +42,22 @@
                 <ul class="rr clearfix buy-wrapper">
                   <li class="clearfix quantity">
                   
-                    <div class="info-title">Quantity:</div>
+                    <div class="info-title">Số lượng:</div>
                     <div class="f-select-wrapper fl">                  
-                      <div id="current-quantity" class="current" class="clearfix">
-                        <div class="value">2</div>
-                        <div class="button gradient">
-                          <span class="arrow ir">Open</span>
-                        </div>
-                      </div>
-                    
-                      <select id="main-quantity" class="main">
-                        <option>1</option>
-                        <option selected="selected">2</option>
-                        <option>3</option>
-                        <option>4</option>
-                      </select>                    
+                      <input type="number" name="number" value="1" style="width: 50px;"/>                   
                     </div>
                     
                   </li>                  
                   <li>
-                  
                     <a href="#" class="add-to-cart clearfix">
                       <span class="icon ir">Cart</span>
-                      <span class="text">Add to cart</span>
+                      <span class="text">Thêm vào giỏ</span>
                     </a>
-                  
                   </li>                  
-                  <li class="price-wrapper">
-                  
+                  <li class="price-wrapper"> 
                     <span class="price">
-                      <span class="currency">$</span><span class="value">320</span>
-                    </span>
-                  
+                      <span class="value">${product.price }</span>
+                    </span>    
                   </li>
                 </ul>                
                 
@@ -116,7 +73,7 @@
                   <li>
                     <a href="#" class="clearfix">
                       <span class="icon compare ir">Compare</span>
-                      <span class="text">Add to compare</span>
+                      <span class="text">So sánh</span>
                     </a>
                   </li>
                   <li class="last">
@@ -148,32 +105,5 @@
             <hr/>
             
           </div>
-          
-          <div class="span2 also-like">
-            <h5>You may also like</h5>
-            <ul class="rr clearfix">
-              <li>
-                <a href="#">
-                  <img src="<c:url value='/resources/img/ph/ph-also-1.png'/>" alt=""/>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="<c:url value='/resources/img/ph/ph-also-2.png'/>" alt=""/>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="<c:url value='/resources/img/ph/ph-also-3.png'/>" alt=""/>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="<c:url value='/resources/img/ph/ph-also-4.png'/>" alt=""/>
-                </a>
-              </li>
-            </ul>
-          </div>
-        
         </div>
       </div>   

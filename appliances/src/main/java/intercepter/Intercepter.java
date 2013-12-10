@@ -26,10 +26,10 @@ public class Intercepter implements HandlerInterceptor{
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		// TODO Auto-generated method stub
+		modelAndView = new ModelAndView();
 		CatalogServiceImpl catalogService = (CatalogServiceImpl)BeanFactory.getBean("catalogService");
 		List<Catalog> catalogs = catalogService.getAll();
 		request.setAttribute("catalogs", catalogs);
-		
 	}
 
 	public void afterCompletion(HttpServletRequest request,

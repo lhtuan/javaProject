@@ -11,4 +11,5 @@ public interface IProductService {
 	public String update(Product product);
 	public List<Product> getProducts(ProductSearchCondition condition);
 	public int countProducts(ProductSearchCondition condition);
+	public Product get(int id);
 }

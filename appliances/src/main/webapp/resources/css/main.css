@@ -455,7 +455,6 @@ font-weight: bold;
   background: #f3f3f3;
   top: 24px;
   padding: 22px 28px !important;
-  width: 460px;
   font-size: 0.688em;
   text-transform: none;
 }
@@ -1363,7 +1362,7 @@ font-weight: bold;
   border-right: 1px solid #fff;
   width: 100%;
   max-width: 240px;
-  height: 288px;
+  height: 200px;
 }
 .list-display > li {
   background: #eee;
@@ -1619,7 +1618,7 @@ font-weight: bold;
 
 .product-details .buy-wrapper li {
   float: left;
-  margin-right: 30px;
+  margin-right: 10px;
 }
 .product-details .buy-wrapper .quantity {
   margin-top: 6px;

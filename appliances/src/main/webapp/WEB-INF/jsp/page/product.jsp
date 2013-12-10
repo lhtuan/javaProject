@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <div role="main" class="container products grid">
 	<div class="row">
@@ -9,73 +11,12 @@
 
 			<div class="row">
 				<div class="span3">
-					<h5>Category</h5>
-
+					<h5>Danh mục</h5>
 					<hr>
-
 					<ul class="category">
-						<li><a href="#">About us</a></li>
-						<li><a href="#">Delivery information</a></li>
-						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">Terms &amp; conditions</a></li>
-						<li><a href="#">Contact us</a></li>
-					</ul>
-				</div>
-
-				<div class="span3">
-					<h5>Colour</h5>
-
-					<hr>
-
-					<ul class="colour-list">
-						<li><a href="#">Black</a></li>
-						<li><a href="#">Blue</a></li>
-						<li><a href="#">Brown</a></li>
-						<li><a href="#">Green</a></li>
-						<li><a href="#">Gray</a></li>
-						<li><a href="#">Metallic</a></li>
-						<li><a href="#">Multicolour</a></li>
-						<li><a href="#">Nude &amp; neutrals</a></li>
-						<li><a href="#">Pink &amp; purple</a></li>
-						<li><a href="#">Red</a></li>
-						<li><a href="#">White</a></li>
-						<li><a href="#">Yellow &amp; orange</a></li>
-					</ul>
-				</div>
-
-				<div class="span3">
-					<h5>Price</h5>
-
-					<hr>
-
-					<ul class="price">
-						<li><a href="#"> <span class="currency">$</span> <span
-								class="min-val">50</span> <span class="dash">-</span> <span
-								class="currency">$</span> <span class="min-val">100</span>
-						</a></li>
-						<li><a href="#"> <span class="currency">$</span> <span
-								class="min-val">100</span> <span class="dash">-</span> <span
-								class="currency">$</span> <span class="min-val">200</span>
-						</a></li>
-						<li><a href="#"> <span class="currency">$</span> <span
-								class="min-val">200</span> <span class="dash">-</span> <span
-								class="currency">$</span> <span class="min-val">500</span>
-						</a></li>
-						<li><a href="#"> <span class="currency">$</span> <span
-								class="min-val">500</span> <span class="dash">-</span> <span
-								class="currency">$</span> <span class="min-val">1000</span>
-						</a></li>
-						<li><a href="#"> <span class="currency">$</span> <span
-								class="min-val">1000</span> <span class="dash">-</span> <span
-								class="currency">$</span> <span class="min-val">2000</span>
-						</a></li>
-						<li><a href="#"> <span class="currency">$</span> <span
-								class="min-val">2000</span> <span class="dash">-</span> <span
-								class="currency">$</span> <span class="min-val">5000</span>
-						</a></li>
-						<li><a href="#"> <span class="currency">$</span> <span
-								class="min-val">5000</span> <span class="dash">+</span>
-						</a></li>
+						<c:forEach var="catalog" items="${catalogs}">
+							<li><a href="#">${catalog.catalogName}</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
@@ -86,172 +27,70 @@
 				<div class="span9">
 					<div class="span6">
 						<ul class="navigation rr">
-							<li><a href="#" class="arrow prev ir">Previous</a></li>
-							<li><a href="#">1</a></li>
-							<li class="current"><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#" class="arrow next ir">Next</a></li>
+							<fmt:parseNumber var="page" integerOnly="true" type="number"
+								value="${searchCondition.page}" />
+							<c:if test="${page>1 && totalPage !=0}">
+								<li><a href="product?isKeepProduct=true&page=${page-1}"
+									class="arrow prev ir">Previous</a></li>
+							</c:if>
+							<c:forEach var="i" begin="1" end="${totalPage}">
+								<c:if test="${i == page}">
+									<li class="current"><a href="">${i}</a></li>
+								</c:if>
+								<c:if test="${i != page}">
+									<li><a href="product?isKeepProduct=true&page=${i}">${i}</a></li>
+								</c:if>
+							</c:forEach>
+							<c:if test="${page<totalPage}">
+								<li><a href="product?isKeepProduct=true&page=${page+1}"
+									class="arrow next ir">Next</a></li>
+							</c:if>
+
 						</ul>
 					</div>
 
 				</div>
 			</div>
-			<ul class="row-fluid clearfix rr grid-display">
-				<li class="span4 alpha33 desat">
-					<div class="prod-wrapper">
-						<span class="badge corner-badge off-35 ir">Hot</span> <span
-							class="badge price-badge"> <span class="value"> <span>$</span>
-								<span>150</span>
-						</span>
-						</span> <a href="5-product-details.html"> <img
-							src="<c:url value='/resources/img/ph/ph-home-big-2.png'/>"
-							class="desat-ie" alt="" />
-						</a> <span class="info gradient"> <span class="title">Men
-								glass mode 2012</span> <span class="add-to-cart clearfix"> <span
-								class="icon ir">Cart</span> <a href="7-cart.html" class="text">Add
-									To Cart</a>
-						</span>
-						</span>
-					</div>
-				</li>
-				<li class="span4 alpha33 desat">
-					<div class="prod-wrapper">
-						<span class="badge corner-badge hot ir">Hot</span> <span
-							class="badge price-badge"> <span class="value"> <span>$</span>
-								<span>150</span>
-						</span>
-						</span> <a href="5-product-details.html"> <img
-							src="<c:url value='/resources/img/ph/ph-home-big-1.png'/>"
-							class="desat-ie" alt="" />
-						</a> <span class="info gradient"> <span class="title">Men
-								glass mode 2012</span> <span class="add-to-cart clearfix"> <span
-								class="icon ir">Cart</span> <a href="7-cart.html" class="text">Add
-									To Cart</a>
-						</span>
-						</span>
-					</div>
-				</li>
-				<li class="span4 alpha33 desat">
-					<div class="prod-wrapper">
-						<span class="badge corner-badge hot ir hidden">Hot</span> <span
-							class="badge price-badge"> <span class="value"> <span>$</span>
-								<span>150</span>
-						</span>
-						</span> <a href="5-product-details.html"> <img
-							src="<c:url value='/resources/img/ph/ph-home-big-3.png'/>"
-							class="desat-ie" alt="" />
-						</a> <span class="info gradient"> <span class="title">Men
-								glass mode 2012</span> <span class="add-to-cart clearfix"> <span
-								class="icon ir">Cart</span> <a href="7-cart.html" class="text">Add
-									To Cart</a>
-						</span>
-						</span>
-					</div>
-				</li>
-				<li class="span4 alpha33 desat">
-					<div class="prod-wrapper">
-						<span class="badge corner-badge hot ir">Hot</span> <span
-							class="badge price-badge"> <span class="value"> <span>$</span>
-								<span>150</span>
-						</span>
-						</span> <a href="5-product-details.html"> <img
-							src="<c:url value='/resources/img/ph/ph-home-big-4.png'/>"
-							class="desat-ie" alt="" />
-						</a> <span class="info gradient"> <span class="title">Men
-								glass mode 2012</span> <span class="add-to-cart clearfix"> <span
-								class="icon ir">Cart</span> <a href="7-cart.html" class="text">Add
-									To Cart</a>
-						</span>
-						</span>
-					</div>
-				</li>
-				<li class="span4 alpha33 desat">
-					<div class="prod-wrapper">
-						<span class="badge corner-badge hot ir">Hot</span> <span
-							class="badge price-badge"> <span class="value"> <span>$</span>
-								<span>150</span>
-						</span>
-						</span> <a href="5-product-details.html"> <img
-							src="<c:url value='/resources/img/ph/ph-home-big-5.png'/>"
-							class="desat-ie" alt="" />
-						</a> <span class="info gradient"> <span class="title">Men
-								glass mode 2012</span> <span class="add-to-cart clearfix"> <span
-								class="icon ir">Cart</span> <a href="7-cart.html" class="text">Add
-									To Cart</a>
-						</span>
-						</span>
-					</div>
-				</li>
-				<li class="span3 alpha33 desat">
-					<div class="prod-wrapper">
-						<span class="badge corner-badge hot ir hidden">Hot</span> <span
-							class="badge price-badge"> <span class="value"> <span>$</span>
-								<span>150</span>
-						</span>
-						</span> <a href="5-product-details.html"> <img
-							src="<c:url value='/resources/img/ph/ph-home-big-6.png'/>"
-							class="desat-ie" alt="" />
-						</a> <span class="info gradient"> <span class="title">Men
-								glass mode 2012</span> <span class="add-to-cart clearfix"> <span
-								class="icon ir">Cart</span> <a href="7-cart.html" class="text">Add
-									To Cart</a>
-						</span>
-						</span>
-					</div>
-				</li>
-				<li class="span3 alpha33 desat">
-					<div class="prod-wrapper">
-						<span class="badge corner-badge hot ir hidden">Hot</span> <span
-							class="badge price-badge"> <span class="value"> <span>$</span>
-								<span>150</span>
-						</span>
-						</span> <a href="5-product-details.html"> <img
-							src="<c:url value='/resources/img/ph/ph-home-big-7.png'/>"
-							class="desat-ie" alt="" />
-						</a> <span class="info gradient"> <span class="title">Men
-								glass mode 2012</span> <span class="add-to-cart clearfix"> <span
-								class="icon ir">Cart</span> <a href="7-cart.html" class="text">Add
-									To Cart</a>
-						</span>
-						</span>
-					</div>
-				</li>
-				<li class="span3 alpha33 desat">
-					<div class="prod-wrapper">
-						<span class="badge corner-badge hot ir hidden">Hot</span> <span
-							class="badge price-badge"> <span class="value"> <span>$</span>
-								<span>150</span>
-						</span>
-						</span> <a href="5-product-details.html"> <img
-							src="<c:url value='/resources/img/ph/ph-home-big-8.png'/>"
-							class="desat-ie" alt="" />
-						</a> <span class="info gradient"> <span class="title">Men
-								glass mode 2012</span> <span class="add-to-cart clearfix"> <span
-								class="icon ir">Cart</span> <a href="7-cart.html" class="text">Add
-									To Cart</a>
-						</span>
-						</span>
-					</div>
-				</li>
-				<li class="span4 alpha33 desat">
-					<div class="prod-wrapper">
-						<span class="badge corner-badge hot ir hidden">Hot</span> <span
-							class="badge price-badge"> <span class="value"> <span>$</span>
-								<span>150</span>
-						</span>
-						</span> <a href="5-product-details.html"> <img
-							src="<c:url value='/resources/img/ph/ph-home-big-2.png'/>"
-							class="desat-ie" alt="" />
-						</a> <span class="info gradient"> <span class="title">Men
-								glass mode 2012</span> <span class="add-to-cart clearfix"> <span
-								class="icon ir">Cart</span> <a href="7-cart.html" class="text">Add
-									To Cart</a>
-						</span>
-						</span>
-					</div>
-				</li>
+			<ul class="row clearfix rr list-display product">
+				<c:forEach var="product" items="${products}">
+					<c:set var="link"
+						value="/resources/img/products/${product.productName}.jpg" />
+					<li class="span9">
+						<div class="row">
+							<div class="span3 desat photo-wrapper">
+								<a href="productDetail?id=${product.id}"> <img
+									src="<c:url value='${link}'/>" alt="" />
+								</a>
+							</div>
+							<div class="span6 info clearfix">
+								<h1>${product.productName}</h1>
+								<hr />
+								<div class="row price-wrapper">
+									<div class="span2 clearfix">
+										<a href="cart/add?id=${product.id}&number=1" class="add-to-cart"> <span
+											class="icon ir">Cart</span> <span class="text">Thêm
+												vào giỏ</span>
+										</a>
+									</div>
+									<div class="span3">
+										<span class="price"> <span class="value">${product.price}</span>
+										</span>
+									</div>
+								</div>
+								<hr />
+								<ul class="rr options clearfix">
+									<li><a href="#" class="clearfix"> <span
+											class="icon compare ir">Compare</span> <span class="text">So
+												sánh</span>
+									</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+				</c:forEach>
+
+
+
 			</ul>
 			<div class="products-view-nav row bottom">
 				<div class="span6">
