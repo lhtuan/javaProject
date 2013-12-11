@@ -1,6 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <div role="main" class="container cart">
 
@@ -22,7 +22,7 @@
 					<div class="info-wrapper">
 						<h2>${cartDetail.product.productName}</h2>
 						<div>
-							<img id="buttonDelete_${cartDetail.product.id}" class="button_delete" onclick="return callAjaxDelete(${cartDetail.product.id})"
+							<img id="buttonDelete_${cartDetail.product.id}" class="button_delete" onclick="return callAjaxDeleteCart(${cartDetail.product.id})"
 								src="<c:url value='/resources/img/delete.png'/>"
 								style="width: 25px;" />
 						</div>

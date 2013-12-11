@@ -44,12 +44,12 @@
                   
                     <div class="info-title">Số lượng:</div>
                     <div class="f-select-wrapper fl">                  
-                      <input type="number" name="number" value="1" style="width: 50px;"/>                   
+                      <input type="number" id="number" value="1" style="width: 50px;" onkeypress="return onInputChange(event)"/>                   
                     </div>
                     
                   </li>                  
                   <li>
-                    <a href="/appliances/cart/add?id=${product.id}&number=${number}" class="add-to-cart clearfix">
+                    <a href="javaScript:addToCart(${product.id});" class="add-to-cart clearfix">
                       <span class="icon ir">Cart</span>
                       <span class="text">Thêm vào giỏ</span>
                     </a>

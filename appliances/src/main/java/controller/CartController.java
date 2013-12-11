@@ -34,7 +34,7 @@ public class CartController {
 	}
 
 	@RequestMapping(value = { "/cart/add" }, method = RequestMethod.GET)
-	public String add(ModelMap model, HttpServletRequest request,
+	public @ResponseBody List<String> add(ModelMap model, HttpServletRequest request,
 			@RequestParam(value = "id") String strId,
 			@RequestParam(value = "number") String strNumber) {
 		ProductServiceImpl productService = (ProductServiceImpl) BeanFactory
@@ -50,12 +50,11 @@ public class CartController {
 		cartDetail.setNumber(number);
 		cart = addToCart(cart, cartDetail);
 		session.setAttribute("cart", cart);
-		model.addAttribute("cart", cart);
-		int total = getTotalPrice(cart);
-		model.addAttribute("total", total);
-		LoggHelper.info("Add to cart success, cart number : "
-				+ cart.getShoppingcartdetails().size());
-		return "cart";
+
+		List<String> data = new ArrayList<String>();
+		data.add(getTotalPrice(cart) + "");
+		data.add(getCartNumber(cart) + "");
+		return data;
 	}
 
 	@RequestMapping(value = { "cart/edit" }, method = RequestMethod.GET)

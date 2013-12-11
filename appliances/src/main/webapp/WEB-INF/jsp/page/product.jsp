@@ -67,7 +67,7 @@
 								<hr />
 								<div class="row price-wrapper">
 									<div class="span2 clearfix">
-										<a href="/appliances/cart/add?id=${product.id}&number=1" class="add-to-cart"> <span
+										<a href="javaScript:callAjaxAddCart(${product.id},1);"  class="add-to-cart"> <span
 											class="icon ir">Cart</span> <span class="text">Thêm
 												vào giỏ</span>
 										</a>
@@ -94,15 +94,27 @@
 			</ul>
 			<div class="products-view-nav row bottom">
 				<div class="span6">
-					<ul class="navigation rr">
-						<li><a href="#" class="arrow prev ir">Previous</a></li>
-						<li><a href="#">1</a></li>
-						<li class="current"><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#" class="arrow next ir">Next</a></li>
-					</ul>
+											<ul class="navigation rr">
+							<fmt:parseNumber var="page" integerOnly="true" type="number"
+								value="${searchCondition.page}" />
+							<c:if test="${page>1 && totalPage !=0}">
+								<li><a href="/appliances/product?isKeepProduct=true&page=${page-1}"
+									class="arrow prev ir">Previous</a></li>
+							</c:if>
+							<c:forEach var="i" begin="1" end="${totalPage}">
+								<c:if test="${i == page}">
+									<li class="current"><a href="">${i}</a></li>
+								</c:if>
+								<c:if test="${i != page}">
+									<li><a href="/appliances/product?isKeepProduct=true&page=${i}">${i}</a></li>
+								</c:if>
+							</c:forEach>
+							<c:if test="${page<totalPage}">
+								<li><a href="/appliances/product?isKeepProduct=true&page=${page+1}"
+									class="arrow next ir">Next</a></li>
+							</c:if>
+
+						</ul>
 				</div>
 
 			</div>

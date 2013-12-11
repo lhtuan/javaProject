@@ -7,25 +7,17 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<title>Men Style Shop</title>
+<title><tiles:insertAttribute name="title"/> </title>
 <meta name="description" content="">
 
 <meta name="viewport" content="width=device-width">
-
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/normalize.min.css'/>">
-<link rel="stylesheet" href="<c:url value='/resources/css/main.css'/>">
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/media-queries.css'/>">
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/bootstrap.css'/>">
-<link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>">
-<link rel="stylesheet" href="<c:url value='/resources/css/jquery.confirm.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/include.css'/>">
 <script
 	src="<c:url value='/resources/js/vendor/modernizr-2.6.1.min.js'/>"></script>
 <script src="<c:url value='/resources/js/ajax.js'/>"></script>
 <script src="<c:url value='/resources/js/jquery-1.9.1.js'/>"></script>
 <script src="<c:url value='/resources/js/bootstrap.js'/>"></script>
+<script src="<c:url value='/resources/js/validate.js'/>"></script>
 </head>
 <body>
 	<div class="top-bar">
@@ -55,5 +47,6 @@
 	<script src="<c:url value='/resources/js/plugins.js'/>"></script>
 	<script src="<c:url value='/resources/js/main.js'/>"></script>
 	<script src="<c:url value='/resources/js/jquery.confirm.js'/>"></script>
+	<script src="<c:url value='/resources/js/jquery.toastmessage.js'/>"></script>
 </body>
 </html>

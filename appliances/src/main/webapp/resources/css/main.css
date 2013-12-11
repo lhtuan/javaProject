@@ -1546,7 +1546,7 @@ font-weight: bold;
   line-height: 1.8em;
 }
 .info-title {
-  font-size: 0.750em;
+  font-size: 1.2em;
   text-transform: uppercase;
   color: #4b4b4b;
   margin-right: 12px;
@@ -1582,7 +1582,7 @@ font-weight: bold;
 
 
 .product-details .prefs .avail .value {
-  font-size: 0.750em;
+  font-size: 1.2em;
   line-height: 1.8em;
   color: #666;
 }
