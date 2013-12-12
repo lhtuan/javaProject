@@ -24,7 +24,7 @@
 						  <td>Ảnh</td>
 						  <c:forEach var="product" items="${products}">
 						  <c:set var="link"
-						value="/resources/img/products/${product.productName}.jpg" />
+						value="/resources/img/products/${product.productName}.png" />
 						  	<td class="image"><img src="<c:url value='${link}'/>" alt="${product.productName}" /></td>
 						  </c:forEach>
 						</tr>

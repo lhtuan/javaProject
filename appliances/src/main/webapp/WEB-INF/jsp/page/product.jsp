@@ -15,7 +15,7 @@
 					<hr>
 					<ul class="category">
 						<c:forEach var="catalog" items="${catalogs}">
-							<li><a href="#">${catalog.catalogName}</a></li>
+							<li><a href="product?catalog=${catalog.id}">${catalog.catalogName}</a></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -54,7 +54,7 @@
 			<ul class="row clearfix rr list-display product">
 				<c:forEach var="product" items="${products}">
 					<c:set var="link"
-						value="/resources/img/products/${product.productName}.jpg" />
+						value="/resources/img/products/${product.productName}.png" />
 					<li class="span9">
 						<div class="row">
 							<div class="span3 desat photo-wrapper">

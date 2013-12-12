@@ -80,4 +80,6 @@ public class ProductServiceImpl implements IProductService {
 	public Product get(int id) {
 		return productDao.get(id);
 	}
+
+	
 }

@@ -12,7 +12,7 @@
                   <ul class="rr images">
                     <li class="current gal-1">
                     <c:set var="link"
-						value="/resources/img/products/${product.productName}.jpg" />
+						value="/resources/img/products/${product.productName}.png" />
                       <img src="<c:url value='${link}'/>" alt=""/>
                     </li>
                   </ul>
@@ -104,6 +104,19 @@
             
             <hr/>
             
+          </div>
+          <div class="span2 also-like">
+            <h5> Sản Phẩm Tương Tự</h5>
+            <ul class="rr clearfix">
+            <c:forEach var = "sameProduct" items = "${FourSameProducts}">
+            <c:set var="link" value="/resources/img/products/${sameProduct.productName}.png"/>
+            	 <li>
+                <a href="/appliances/productDetail?id=${sameProduct.id}">
+                  <img src="<c:url value="${link}"/>" alt="" />
+                </a>
+              </li>
+            </c:forEach>
+            </ul>
           </div>
         </div>
       </div>   

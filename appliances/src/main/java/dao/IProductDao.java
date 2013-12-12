@@ -13,4 +13,5 @@ public interface IProductDao {
 	public List<Product> getProducts(ProductSearchCondition searchCondition);
 	public int countProducts(ProductSearchCondition searchCondition);
 	public boolean isExist(String name);
+	
 }

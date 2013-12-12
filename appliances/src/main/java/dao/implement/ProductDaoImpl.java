@@ -37,6 +37,9 @@ public class ProductDaoImpl extends BaseDao implements IProductDao {
 		}
 		return product;
 	}
+	/***
+	 * Lay danh sach san pham
+	 */
 	@Transactional
 	public List<Product> getProducts(ProductSearchCondition searchCondition) {
 		List<Product> Products = null;
@@ -104,5 +107,5 @@ public class ProductDaoImpl extends BaseDao implements IProductDao {
 			return false;
 		return true;
 	}
-
+	
 }

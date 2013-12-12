@@ -14,7 +14,7 @@
 		<c:forEach var="cartDetail" items="${cart.shoppingcartdetails}">
 			<tr id="detail_${cartDetail.product.id}">
 				<td class="article clearfix"><c:set var="link"
-						value="/resources/img/products/${cartDetail.product.productName}.jpg" />
+						value="/resources/img/products/${cartDetail.product.productName}.png" />
 					<figure>
 						<img src="<c:url value='${link}'/>" alt="" />
 					</figure>
