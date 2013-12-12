@@ -37,4 +37,8 @@
 		<put-attribute name="title" value="So sánh" />
 		<put-attribute name="content" value="/WEB-INF/jsp/page/compare.jsp" />
 	</definition>
+		<definition name="search" extends="page">
+		<put-attribute name="title" value="Tìm kiếm" />
+		<put-attribute name="content" value="/WEB-INF/jsp/page/search.jsp" />
+	</definition>
 </tiles-definitions> 

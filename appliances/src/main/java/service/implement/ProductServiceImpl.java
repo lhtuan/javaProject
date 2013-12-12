@@ -71,7 +71,7 @@ public class ProductServiceImpl implements IProductService {
 		String strProductPerPage = condition.getNumberProductOfPage();
 		if(strProductPerPage == null || !MathHelper.isNumber(strProductPerPage))
 		{
-			strProductPerPage = "14";
+			strProductPerPage = "8";
 			condition.setNumberProductOfPage(strProductPerPage);
 		}
 		return condition;

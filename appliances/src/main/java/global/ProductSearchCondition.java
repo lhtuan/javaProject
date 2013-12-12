@@ -35,6 +35,18 @@ public class ProductSearchCondition {
 	public ProductSearchCondition(String _name, String _minPrice,
 			String _maxPrice, String _page, String _productPerPage,
 			String _catalog) {
+		if (_minPrice != null)
+			if (_minPrice.equalsIgnoreCase("-1"))
+				_minPrice = null;
+		if (_maxPrice != null)
+			if (_maxPrice.equalsIgnoreCase("-1"))
+				_maxPrice = null;
+		if (_catalog != null)
+			if (_catalog.equalsIgnoreCase("-1"))
+				_catalog = null;
+		if (_name != null)
+			if (_name.equalsIgnoreCase(""))
+				_name = null;
 		name = _name;
 		minPrice = _minPrice;
 		maxPrice = _maxPrice;
