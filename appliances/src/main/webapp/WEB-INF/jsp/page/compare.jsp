@@ -10,7 +10,7 @@
 					<table class="compare-info">
 					  <thead>
 						<tr>
-						  <td colspan="5">Product Details</td>
+						  <td colspan="5">So sánh sản phẩm</td>
 						</tr>
 					  </thead>
 					  <tbody>

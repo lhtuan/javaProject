@@ -38,7 +38,7 @@
 .compare-info tr td:first-child {
 	color: #000000;
 	font-weight: bold;
-	text-align: right;
+	text-align: left;
 }
 .compare-info td {
 	padding: 7px;
