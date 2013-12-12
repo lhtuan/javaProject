@@ -6,14 +6,13 @@
                            http://www.springframework.org/schema/security
                            http://www.springframework.org/schema/security/spring-security-3.1.xsd">
  
-    <security:http pattern="login" security="none"/>
- 
-    <security:http use-expressions='true'>
-        <security:intercept-url pattern="/cart" access="hasRole('ROLE_USER')"/>
-        <security:intercept-url pattern="/**" access="permitAll"/>
-        <security:form-login login-page="/login" authentication-failure-url="/login?login_error=1" />
-        <security:logout logout-url="/j_spring_security_logout" />
-    </security:http>
+    <security:http auto-config="true">
+		<security:intercept-url pattern="/cart*" access="ROLE_USER" />
+		<security:form-login login-page="/login" default-target-url="/product"
+			authentication-failure-url="/loginfailed" />
+		<security:logout logout-success-url="/logout" />
+	</security:http>
+
  
     <security:authentication-manager>
 	   <security:authentication-provider>
