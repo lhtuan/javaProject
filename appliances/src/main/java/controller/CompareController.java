@@ -3,6 +3,7 @@ package controller;
 import global.BeanFactory;
 import global.PropertiesHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +26,7 @@ public class CompareController {
 	public String compare(ModelMap model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		List<Product> products = null;
-		products = (List<Product>) session.getAttribute("compare");
+		products = (List<Product>) session.getAttribute("products");
 		model.addAttribute("products", products);
 		return "compare";
 	}
@@ -39,14 +40,15 @@ public class CompareController {
 	 */
 	@RequestMapping(value = { "/compare/add" }, method = RequestMethod.POST)
 	public @ResponseBody
-	boolean addToCompareByAjax(HttpServletRequest request, @RequestParam("id") int id) {
+	boolean addToCompareByAjax(HttpServletRequest request,
+			@RequestParam("id") int id) {
 		ProductServiceImpl productService = (ProductServiceImpl) BeanFactory
 				.getBean("productService");
 		Product product = productService.get(id);
 
 		HttpSession session = request.getSession();
 		List<Product> products = null;
-		products = (List<Product>) session.getAttribute("compare");
+		products = (List<Product>) session.getAttribute("products");
 		if (products != null) {
 			PropertiesHelper properties = new PropertiesHelper("const");
 			int maxSize = Integer.parseInt(properties.getValue("max_compare"));
@@ -54,9 +56,10 @@ public class CompareController {
 				return false;
 		}
 		products.add(product);
-		session.setAttribute("compare", products);
+		session.setAttribute("products", products);
 		return true;
 	}
+
 	/***
 	 * Them san pham vao compare list
 	 * 
@@ -65,37 +68,44 @@ public class CompareController {
 	 * @return true: da them, false:danh sach full
 	 */
 	@RequestMapping(value = { "/compare/add" }, method = RequestMethod.GET)
-	public String addToCompare(HttpServletRequest request, @RequestParam("id") int id) {
+	public String addToCompare(ModelMap model,HttpServletRequest request,
+			@RequestParam("id") int id) {
 		ProductServiceImpl productService = (ProductServiceImpl) BeanFactory
 				.getBean("productService");
 		Product product = productService.get(id);
 
 		HttpSession session = request.getSession();
 		List<Product> products = null;
-		products = (List<Product>) session.getAttribute("compare");
-		if (products != null) {
-			PropertiesHelper properties = new PropertiesHelper("const");
-			int maxSize = Integer.parseInt(properties.getValue("max_compare"));
-			if (products.size() == maxSize)
-				return "compare";
+		products = (List<Product>) session.getAttribute("products");
+		if (products == null) {
+			products = new ArrayList<Product>();
 		}
-		products.add(product);
-		session.setAttribute("compare", products);
+		PropertiesHelper properties = new PropertiesHelper("const");
+		int maxSize = Integer.parseInt(properties.getValue("max_compare"));
+		if (products.size() < maxSize) {
+			for (Product p : products) {
+				if(p.getId() == product.getId())
+					return "compare";//san pham da co trong compare list, khong add
+			}
+			products.add(product);
+			session.setAttribute("products", products);
+		}
+		model.addAttribute("products", products);
 		return "compare";
 	}
-	@RequestMapping(value={"compare/delete"},method=RequestMethod.GET)
-	public @ResponseBody void deleteFromCompare(HttpServletRequest request,
-			@RequestParam("id")int id)
-	{
+
+	@RequestMapping(value = { "compare/delete" }, method = RequestMethod.GET)
+	public @ResponseBody
+	void deleteFromCompare(HttpServletRequest request,
+			@RequestParam("id") int id) {
 		HttpSession session = request.getSession();
 		List<Product> products = null;
-		products=(List<Product>)session.getAttribute("compare");
+		products = (List<Product>) session.getAttribute("products");
 		for (Product product : products) {
-			if(product.getId() == id)
-			{
+			if (product.getId() == id) {
 				products.remove(product);
 				break;
 			}
-		}	
+		}
 	}
 }

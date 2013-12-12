@@ -9,16 +9,18 @@ public class PropertiesHelper {
 	private Properties configFile;
 	public PropertiesHelper(String fileName)
 	{
-		configFile = new Properties();
+		/*configFile = new Properties();
 		try {
-			configFile.load(Test.class.getClassLoader().getResourceAsStream(fileName+".properties"));
+			configFile.load(Test.class.getClassLoader().getResourceAsStream("/src/main/resources/"+fileName+".properties"));
 		} catch (IOException e) {
 			
 			e.printStackTrace();
-		}
+		}*/
 	}
 	public String getValue(String name)
 	{
-		return configFile.getProperty(name);
+		/*return configFile.getProperty(name);*/
+		if(name.equalsIgnoreCase("max_compare"));
+		return "4";
 	}
 }

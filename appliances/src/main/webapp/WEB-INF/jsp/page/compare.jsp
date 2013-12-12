@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <div role="main" class="container">
 			<div id="content_holder" >
@@ -9,7 +10,7 @@
 					<table class="compare-info">
 					  <thead>
 						<tr>
-						  <td colspan="4">Product Details</td>
+						  <td colspan="5">Product Details</td>
 						</tr>
 					  </thead>
 					  <tbody>
@@ -33,7 +34,7 @@
 						  <td>${product.price}</td>
 						  </c:forEach>
 						</tr>
-						<tr>
+						<tr class="even">
 						  <td>Đánh giá</td>
 						  <td><img alt="Based on 0 reviews." src="image/stars-2.png"/><br/>
 							Based on 3 reviews.</td>
@@ -42,16 +43,16 @@
 						  <td><img alt="Based on 0 reviews." src="image/stars-3.png"/><br/>
 							Based on 7 reviews.</td>
 						</tr>
-						<tr class="even">
+						<tr >
 						  <td>Mô tả</td>
 						  <c:forEach var="product" items="${products}">
-						  	<td class="description">${product.description}</td>
+						  	<td class="description">${fn:substring(product.description,0,150)}...</td>
 						  </c:forEach>
 						</tr>
 					  
 					  </tbody>
 					  <tbody>
-						<tr>
+						<tr class="even">
 						  <td></td>
 						  <c:forEach var="product" items="${products}">
 						  	<td><a class="button" href="javaScript: callAjaxAddCart(${product.id},1)"><span>Thêm vào giỏ</span></a></td>

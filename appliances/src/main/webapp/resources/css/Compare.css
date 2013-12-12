@@ -1,7 +1,6 @@
 #content_holder {
 	margin-bottom: 25px;
 	position: relative;
-  	z-index: 10;
 }
 .inner {
 	margin:0 auto;
@@ -66,5 +65,5 @@
 .compare-info td.image img {
 	padding:6px;
 	border:1px solid #f1f1f1;
-	background-color:#fff;
+	width:90px;
 }
