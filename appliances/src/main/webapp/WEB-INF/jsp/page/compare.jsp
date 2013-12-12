@@ -36,12 +36,10 @@
 						</tr>
 						<tr class="even">
 						  <td>Đánh giá</td>
-						  <td><img alt="Based on 0 reviews." src="image/stars-2.png"/><br/>
-							Based on 3 reviews.</td>
-						  <td><img alt="Based on 0 reviews." src="image/stars-5.png"/><br/>
-							Based on 12 reviews.</td>
-						  <td><img alt="Based on 0 reviews." src="image/stars-3.png"/><br/>
-							Based on 7 reviews.</td>
+						   <c:forEach var="product" items="${products}">
+						    <td><img alt="Based on 0 reviews." src="image/stars-2.png"/><br/>
+							Chưa có</td>
+						   </c:forEach>
 						</tr>
 						<tr >
 						  <td>Mô tả</td>
@@ -62,7 +60,7 @@
 						  <td></td>
 						  <c:forEach var="product" items="${products}">
 						  <td><input type="hidden" value="43" name="remove"/>
-							<a href="#"><span>Xóa</span></a></td>
+							<a href="/appliances/compare/delete?id=${product.id}"><span>Xóa</span></a></td>
 						  </c:forEach>
 						</tr>
 					  </tbody>

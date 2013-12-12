@@ -12,16 +12,14 @@
 					<div class="slide">
 						<figure>
 							<img
-								src="<c:url value='/resources/img/banner.png'/>"
-								alt="" />
+								src="<c:url  value='/resources/img/banner.png'/> "
+								alt="" style="width: 300px;height: 300px;"/>
 						</figure>
 						<div class="content-wrapper">
 							<div class="content">
-								<h1>SHOES FOR MEN 2012</h1>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Pellentesque at nunc a magna tincidunt placerat. In hac
-									habitasse platea dictumst. Donec in tellus libero. Lorem ipsum
-									dolor sit amet, consectetur adipis.</p>
+								<h1>ĐỒ GIA DỤNG</h1>
+								<p>Website chuyên cung cấp các sản phẩm gia dụng với chất lượng cao
+								. Với đội ngũ nhân viên chuyên nghiệp, chúng tôi sẽ đảm bảo sự hài lòng tối đa cho khách hàng</p>
 								<a href="product" class="btn"><span
 									class="gradient">Show now</span></a>
 							</div>

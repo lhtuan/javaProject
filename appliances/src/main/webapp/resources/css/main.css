@@ -232,8 +232,8 @@ a.logo h1 {
 a.logo .icon {
   display: inline-block;
   background: url("../img/logo.png") no-repeat left top;
-  width: 54px;
-  height: 54px;
+  width: 320px;
+  height: 120px;
 }
 
 /* collections slider */

@@ -5,9 +5,8 @@
         <div class="row">
         
           <div class="span8 logo-wrapper">
-            <a href="index-2.html" class="logo">
+            <a href="/appliances" class="logo">
               <span class="icon ir">Men Style Shop</span>
-              <h1>Men Style Shop</h1>
             </a>
           </div>
           <div class="span4">
