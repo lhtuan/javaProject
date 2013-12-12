@@ -816,7 +816,6 @@ footer .middle {
 }
 footer .middle .container {
   padding: 24px 0;
-  background: url("../img/footer-shirt.png") no-repeat 500px bottom;
 }
 .footer-menu {
   margin-bottom: 50px;
@@ -1511,7 +1510,6 @@ font-weight: bold;
 
 /* images */
 .product-details .gallery .images img {
-  height: 376px;
   width: 286px;
 }
 .product-details .gallery .images li {
