@@ -79,8 +79,8 @@
 								</div>
 								<hr />
 								<ul class="rr options clearfix">
-									<li><a href="#" class="clearfix"> <span
-											class="icon compare ir">Compare</span> <span class="text">So
+									<li><a href="/appliances/compare/add?id=${product.id}" class="clearfix"> <span
+											class="icon compare ir">So sánh</span> <span class="text">So
 												sánh</span>
 									</a></li>
 								</ul>

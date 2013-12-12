@@ -1,7 +1,6 @@
 package controller;
 
 import global.BeanFactory;
-import global.LoggHelper;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -71,7 +71,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="clearfix">
+                    <a href="/appliances/compare/add?id=${product.id}" class="clearfix">
                       <span class="icon compare ir">Compare</span>
                       <span class="text">So sánh</span>
                     </a>

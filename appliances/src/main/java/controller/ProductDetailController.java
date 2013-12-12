@@ -17,17 +17,12 @@ import service.implement.ProductServiceImpl;
 public class ProductDetailController {
 	@RequestMapping(value={"/productDetail"},method= RequestMethod.GET)
 	String productDetail(ModelMap model,HttpServletRequest request,
-			@RequestParam(value="id",required =false)String strId)
+			@RequestParam(value="id")int id)
 	{
-		if(strId != null)
-		{
-			int id = Integer.parseInt(strId);
+
 			ProductServiceImpl productService = (ProductServiceImpl)BeanFactory.getBean("productService");
 			Product product = productService.get(id);
 			model.addAttribute("product", product);
 			return "productDetail";
-		}	
-		else
-			return "home";
 	}
 }

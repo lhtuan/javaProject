@@ -1,3 +1,11 @@
+/*******************************************************************************
+ * them san pham vao gio hang
+ * 
+ * @param id :
+ *            id san pham
+ * @param number:
+ *            so luong san pham
+ */
 function callAjaxAddCart(id, number) {
 	if (!isPositiveNumber(number))
 		return;
@@ -16,11 +24,20 @@ function callAjaxAddCart(id, number) {
 				}
 			});
 }
+/*******************************************************************************
+ * Them san pham vao gio hang . Ham nay chi duoc goi tu trang productDetail
+ * 
+ * @param id
+ */
 function addToCart(id) {
 	$number = $("#number").val();
 	callAjaxAddCart(id, $number);
 }
-
+/*******************************************************************************
+ * Cap nhat thong tin gio hang
+ * 
+ * @param id
+ */
 function callAjaxEditCart(id) {
 	$number = $("#number_" + id).val();
 	if (!isPositiveNumber($number))
@@ -40,6 +57,12 @@ function callAjaxEditCart(id) {
 		},
 	});
 }
+/*******************************************************************************
+ * Xoa san pham khoi gio hang
+ * 
+ * @param id :
+ *            id san pham
+ */
 function callAjaxDeleteCart(id) {
 	$.confirm({
 		'title' : 'Thông báo',
@@ -50,7 +73,8 @@ function callAjaxDeleteCart(id) {
 				'action' : function() {
 					$.ajax({
 						type : "GET",
-						url : "/appliances/cart/delete?id=" + id,
+						url : "/appliances/cart/delete",
+						data : "id=" + id,
 						success : function(data) {
 							$totalPrice = data[0];
 							$carNumber = data[1];
@@ -74,6 +98,19 @@ function callAjaxDeleteCart(id) {
 	});
 
 }
+function callAjaxAddCompare(id) {
+	$.ajax({
+		type : "POST",
+		url : "/appliances/compare/add",
+		date:"id="+id,
+		success: function(response)
+		{
+			
+		}
+		
+	});
+}
+
 function makeToast(message, type)// type: success, warning, error, notice
 {
 	$().toastmessage('showToast', {
