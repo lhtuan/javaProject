@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,6 +52,18 @@ public class Intercepter implements HandlerInterceptor {
 		}
 		request.setAttribute("cartNumber", cartNumber);
 		request.setAttribute("totalPrice", totalPrice);
+		// Lay thong tin user
+		Authentication auth = SecurityContextHolder.getContext()
+				.getAuthentication();
+		String name = auth.getName(); // get logged in username
+		if (name != null && !name.equalsIgnoreCase("anonymousUser")) {
+			session.setAttribute("username", name);
+			request.setAttribute("username", name);
+		}
+		else
+		{
+			session.removeAttribute("username");
+		}
 	}
 
 	public void afterCompletion(HttpServletRequest request,

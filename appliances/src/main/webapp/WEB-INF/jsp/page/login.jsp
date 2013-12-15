@@ -18,8 +18,8 @@
 	</c:if>
       
       <!-- Span class ie-placeholder is there for IE browser. IE doesn't support placeholder attribute -->
-      <form class='input-form' action="<c:url value='j_spring_security_check' />">
-        <span class='ie-placeholders'>Tên đăng nhập:</span><input type='text' placeholder='Tên đăng nhập' name="j_userame" />
+      <form name='f' class='input-form' action="<c:url value='j_spring_security_check' />" method="post">
+        <span class='ie-placeholders'>Tên đăng nhập:</span><input type='text' placeholder='Tên đăng nhập' name="j_username" />
         <span class='ie-placeholders'>Mật khẩu:</span><input type='password' placeholder='Mật khẩu' name="j_password" />
         <a class='forgotten-password-link' href='#'>Đăng ký</a>
         <input type='submit' class='btn-sign-in btn-orange' value='Đăng nhập' />
