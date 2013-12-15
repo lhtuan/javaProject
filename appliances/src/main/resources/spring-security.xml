@@ -1,35 +1,29 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:security="http://www.springframework.org/schema/security"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
                            http://www.springframework.org/schema/security
                            http://www.springframework.org/schema/security/spring-security-3.1.xsd">
- 
-    <security:http auto-config="true">
-		<security:intercept-url pattern="/cart*" access="ROLE_USER" />
-		<security:form-login login-page="/login" default-target-url="/product"
-			authentication-failure-url="/loginfailed" />
-		<security:logout logout-success-url="/logout" />
+
+	<security:http auto-config="true">
+<!-- 		<security:intercept-url pattern="/*"
+			access="IS_AUTHENTICATED_ANONYMOUSLY" /> -->
+		<security:intercept-url pattern="/cart" access="ROLE_USER" />
+		<security:form-login login-page='/login' />
 	</security:http>
 
- 
-    <security:authentication-manager>
-	   <security:authentication-provider>
-		<security:jdbc-user-service data-source-ref="dataSource"
- 
-		   users-by-username-query="
-		      select Username,Password, Isenabled 
-		      from Account where Username=?" 
- 
-		   authorities-by-username-query="
-		      select u.Username, ur.Authority from Account u, UserAuth ur 
-		      where u.Username = ur.u.Username, and u.u.Username =?  " 
- 
-		/>
-	   </security:authentication-provider>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:password-encoder hash="md5" />
+			<security:user-service>
+				<security:user name="tuan" password="d6b8cc42803ea100735c719f1d7f5e11"
+					authorities="ROLE_USER" />
+			</security:user-service>
+		</security:authentication-provider>
 	</security:authentication-manager>
- 
-    
- 
+
+
+
 </beans>

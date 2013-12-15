@@ -19,7 +19,7 @@ function callAjaxAddCart(id, number) {
 			$(".totalPrice").text($totalPrice);
 			$("#cartNumber").text($carNumber);
 			makeToast(
-					'Ä�Ã£ thÃªm ' + number + ' sáº£n pháº©m vÃ o giá»� hÃ ng',
+					'Đã thêm ' + number + ' sản phẩm vào giỏ hàng',
 					'success');
 		}
 	});
@@ -53,7 +53,7 @@ function callAjaxEditCart(id) {
 			$(".totalPrice").text($totalPrice);
 			$("#cartNumber").text($carNumber);
 			$("#realprice_" + id).text(parseInt($price) * parseInt($number));
-			makeToast('Báº¡n Ä‘Ã£ cáº­p nháº­t giá»� hÃ ng', 'success');
+			makeToast('Bạn đã cập nhật giỏ hàng', 'success');
 		},
 	});
 }
@@ -64,10 +64,9 @@ function callAjaxEditCart(id) {
  *            id san pham
  */
 function callAjaxDeleteCart(id) {
-	$
-			.confirm({
-				'title' : 'ThÃ´ng bÃ¡o',
-				'message' : 'Báº¡n cÃ³ cháº¯c muá»‘n xÃ³a sáº£n pháº©m ra khá»�i giá»� hÃ ng?',
+	$.confirm({
+				'title' : 'Thông báo',
+				'message' : 'Bạn có chắc muốn xóa sản phẩm khỏi giỏ hàng?',
 				'buttons' : {
 					'Yes' : {
 						'class' : 'blue',
@@ -84,7 +83,7 @@ function callAjaxDeleteCart(id) {
 											$("#cartNumber").text($carNumber);
 											$("#detail_" + id).remove();
 											makeToast(
-													'Ä�Ã£ xÃ³a sáº£n pháº©m khá»�i giá»� hÃ ng',
+													'Đã xóa sản phẩm khỏi giỏ hàng',
 													'success');
 										}
 									});

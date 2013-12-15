@@ -32,12 +32,7 @@
 	<footer>
 		<tiles:insertAttribute name="footer" />
 	</footer>
-	<div id="dialog-confirm" title="Bạn có chắc muốn xóa?">
-		<p>
-			<span class="ui-icon ui-icon-alert"
-				style="float: left; margin: 0 7px 20px 0;"></span>Sản phẩm sẽ bị xóa khỏi giỏ hàng
-		</p>
-	</div>
+	
 	<!-- 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script>
 		window.jQuery
