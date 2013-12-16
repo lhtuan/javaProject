@@ -1,19 +1,10 @@
 package service.implement;
 
-import java.util.Collection;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
 import pojo.Account;
 import service.IAccountService;
 import dao.implement.AccountDaoImpl;
 
-public class AccountServiceImpl implements IAccountService, UserDetailsService {
+public class AccountServiceImpl implements IAccountService{
 	private AccountDaoImpl accountDao;
 
 	public AccountDaoImpl getAccountDao() {
@@ -29,10 +20,10 @@ public class AccountServiceImpl implements IAccountService, UserDetailsService {
 	 */
 	public String create(Account account) {
 		if (accountDao.isExist(account.getUsername()))
-			return "Tên tài khoản đã tồn tại";
+			return "Tài khoản đã tồn tại";
 		if (accountDao.saveOrUpdate(account))
 			return null;
-		return "Lỗi chưa xac định";
+		return "Lỗi chưa xác định";
 	}
 
 	/***
@@ -43,23 +34,15 @@ public class AccountServiceImpl implements IAccountService, UserDetailsService {
 			if (accountDao.saveOrUpdate(account))
 				return null;
 			else
-				return "Lỗi chưa xác định";
+				return "Lá»—i chÆ°a xÃ¡c Ä‘á»‹nh";
 		}
-		return "Tài khoản không tồn tại";
+		return "TÃ i khoáº£n khÃ´ng tá»“n táº¡i";
 	}
 
-	public UserDetails loadUserByUsername(String username)
-			throws UsernameNotFoundException {
-		/*Account account = accountDao.get(username);
-		UserDetails user = new User(
-				username,
-				account.getPassword(),
-				true,
-				true,
-				true,
-				true,
-				(Collection<? extends GrantedAuthority>) new GrantedAuthority{ new GrantedAuthorityImpl("ROLE_USER") });*/
-		return null;
+
+	public Account get(String username) {
+		// TODO Auto-generated method stub
+		return accountDao.get(username);
 	}
 
 }

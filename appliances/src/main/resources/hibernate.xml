@@ -52,6 +52,9 @@
 	<bean id="shoppingCartDetailDao" class="dao.implement.ShoppingCartDetailDaoImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="userauthDao" class="dao.implement.UserauthDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<!-- service-->
 	<bean id="accountService" class="service.implement.AccountServiceImpl" scope="prototype">
 		<property name="accountDao" ref="accountDao"/>
@@ -67,5 +70,8 @@
 	</bean>
 	<bean id="shoppingCartDetailService" class="service.implement.ShoppingCartDetailServiceImpl" scope="prototype">
 		<property name="shoppingCartDetailDao" ref="shoppingCartDetailDao"/>
+	</bean>
+	<bean id="userauthService" class="service.implement.UserauthServiceImpl" scope="prototype">
+		<property name="userauthDao" ref="userauthDao"/>
 	</bean>
 </beans>

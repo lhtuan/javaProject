@@ -1,5 +1,7 @@
 package dao;
 
-public interface IUserAuthDao {
+import pojo.Userauth;
 
+public interface IUserAuthDao {
+	public boolean saveOrUpdate(Userauth userauth);
 }
