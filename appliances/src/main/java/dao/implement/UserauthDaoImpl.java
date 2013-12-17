@@ -1,12 +1,15 @@
 package dao.implement;
 
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import global.LoggHelper;
 import pojo.Userauth;
-import dao.IUserAuthDao;
+import dao.IUserauthDao;
 import dao.base.BaseDao;
-
-public class UserauthDaoImpl extends BaseDao implements IUserAuthDao {
-
+@Repository
+public class UserauthDaoImpl extends BaseDao implements IUserauthDao {
+	@Transactional
 	public boolean saveOrUpdate(Userauth userauth) {
 		try
 		{

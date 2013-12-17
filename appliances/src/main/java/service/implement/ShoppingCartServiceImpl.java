@@ -8,6 +8,7 @@ import service.IShoppingCartService;
 
 public class ShoppingCartServiceImpl implements IShoppingCartService {
 	private ShoppingCartDaoImpl shoppingCartDao;
+
 	public ShoppingCartDaoImpl getShoppingCartDao() {
 		return shoppingCartDao;
 	}
@@ -17,22 +18,20 @@ public class ShoppingCartServiceImpl implements IShoppingCartService {
 	}
 
 	public String add(Shoppingcart shoppingCart) {
-		if(shoppingCartDao.saveOrUpdate(shoppingCart))
+		if (shoppingCartDao.saveOrUpdate(shoppingCart))
 			return null;
 		else
 			return "Lỗi chưa xác định";
 	}
+
 	/***
 	 * Cap nhat thong tin gio hang
 	 */
 	public String update(Shoppingcart shoppingCart) {
-		if(!shoppingCartDao.isExist(shoppingCart.getId()))
-		{
-			return "Giỏ hàng chưa tồn tại";
-		}
-		else
-		{
-			if(shoppingCartDao.saveOrUpdate(shoppingCart))
+		if (!shoppingCartDao.isExist(shoppingCart.getId())) {
+			return "Giỏ hàng không tồn tại";
+		} else {
+			if (shoppingCartDao.saveOrUpdate(shoppingCart))
 				return null;
 			else
 				return "Lỗi chưa xác định";
@@ -49,5 +48,4 @@ public class ShoppingCartServiceImpl implements IShoppingCartService {
 		return shoppingCartDao.getByAccount(username);
 	}
 
-	
 }
