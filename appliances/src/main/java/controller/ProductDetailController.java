@@ -4,7 +4,6 @@ import global.BeanFactory;
 import global.MathHelper;
 import global.ProductSearchCondition;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class ProductDetailController {
 				.getBean("productService");
 		Product product = productService.get(id);
 		int catalogID = product.getCatalog().getId();
-		List<Product> SameProducts = productService.getProducts(new ProductSearchCondition(null, null, null, null, null, catalogID+""));
+		List<Product> SameProducts = productService.getProducts(new ProductSearchCondition(null, null, null, null, null,catalogID+"",null));
 		List<Product> FourSameProducts = new ArrayList<Product>();
 		int countSameProduct = 1;
 		for (Product tempProduct : SameProducts) {

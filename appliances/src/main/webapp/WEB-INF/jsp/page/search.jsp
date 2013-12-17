@@ -64,12 +64,12 @@
 						<h5>Sắp xếp theo</h5>
 						<hr>
 						<div class="dropdown">
-							<select name="maxPrice" class="dropdown-select">
+							<select name="order" class="dropdown-select">
 								<option value="-1">...</option>
-								<option value="500000">Tên tăng dần</option>
-								<option value="1000000">Tên giảm dần</option>
-								<option value="5000000">Giá tăng dần</option>
-								<option value="10000000">Giá giảm dần</option>
+								<option value="productName asc">Tên tăng dần</option>
+								<option value="productName desc">Tên giảm dần</option>
+								<option value="price asc">Giá tăng dần</option>
+								<option value="price desc">Giá giảm dần</option>
 							</select>
 						</div>
 					</div>
@@ -89,7 +89,7 @@
 							<fmt:parseNumber var="page" integerOnly="true" type="number"
 								value="${searchCondition.page}" />
 							<c:if test="${page>1 && totalPage !=0}">
-								<li><a href="/appliances/product?isKeepProduct=true&page=${page-1}"
+								<li><a href="/appliances/search?isKeepProduct=true&page=${page-1}"
 									class="arrow prev ir">Previous</a></li>
 							</c:if>
 							<c:forEach var="i" begin="1" end="${totalPage}">
@@ -97,11 +97,11 @@
 									<li class="current"><a href="">${i}</a></li>
 								</c:if>
 								<c:if test="${i != page}">
-									<li><a href="/appliances/product?isKeepProduct=true&page=${i}">${i}</a></li>
+									<li><a href="/appliances/search?isKeepProduct=true&page=${i}">${i}</a></li>
 								</c:if>
 							</c:forEach>
 							<c:if test="${page<totalPage}">
-								<li><a href="/appliances/product?isKeepProduct=true&page=${page+1}"
+								<li><a href="/appliances/search?isKeepProduct=true&page=${page+1}"
 									class="arrow next ir">Next</a></li>
 							</c:if>
 
@@ -157,7 +157,7 @@
 							<fmt:parseNumber var="page" integerOnly="true" type="number"
 								value="${searchCondition.page}" />
 							<c:if test="${page>1 && totalPage !=0}">
-								<li><a href="/appliances/product?isKeepProduct=true&page=${page-1}"
+								<li><a href="/appliances/search?isKeepProduct=true&page=${page-1}"
 									class="arrow prev ir">Previous</a></li>
 							</c:if>
 							<c:forEach var="i" begin="1" end="${totalPage}">
@@ -165,11 +165,11 @@
 									<li class="current"><a href="">${i}</a></li>
 								</c:if>
 								<c:if test="${i != page}">
-									<li><a href="/appliances/product?isKeepProduct=true&page=${i}">${i}</a></li>
+									<li><a href="/appliances/search?isKeepProduct=true&page=${i}">${i}</a></li>
 								</c:if>
 							</c:forEach>
 							<c:if test="${page<totalPage}">
-								<li><a href="/appliances/product?isKeepProduct=true&page=${page+1}"
+								<li><a href="/appliances/search?isKeepProduct=true&page=${page+1}"
 									class="arrow next ir">Next</a></li>
 							</c:if>
 
