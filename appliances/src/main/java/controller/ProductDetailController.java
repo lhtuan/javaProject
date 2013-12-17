@@ -42,4 +42,5 @@ public class ProductDetailController {
 		model.addAttribute("product", product);
 		return "productDetail";
 	}
+	
 }
