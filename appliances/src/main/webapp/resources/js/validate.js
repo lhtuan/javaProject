@@ -11,3 +11,13 @@ function isPositiveNumber(number) {
 	'notice');
 	return false;
 }
+/*******************************************************************************
+ * Thay doi so luong san pham 1 trang
+ */
+function changeProductPerPage(controller) {
+	var productPerPage = $("#productPerPage").val();
+	if (productPerPage != null && productPerPage != "") {
+		if (isPositiveNumber(productPerPage))
+			location.href="/appliances/"+controller+"?isKeepProduct=true&productPerPage="+productPerPage;
+	}
+}

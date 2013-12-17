@@ -19,7 +19,7 @@
 					<div class="span3">
 						<h5>Tên Sản Phẩm</h5>
 						<input class="textboxsech" type="text" name="name" style="width:220px;" />
-
+						<hr>
 					</div>
 					<div class="span3">
 						<h5>Danh Mục</h5>
@@ -61,7 +61,19 @@
 						</div>
 					</div>
 					<div class="span3">
+						<h5>Sắp xếp theo</h5>
 						<hr>
+						<div class="dropdown">
+							<select name="maxPrice" class="dropdown-select">
+								<option value="-1">...</option>
+								<option value="500000">Tên tăng dần</option>
+								<option value="1000000">Tên giảm dần</option>
+								<option value="5000000">Giá tăng dần</option>
+								<option value="10000000">Giá giảm dần</option>
+							</select>
+						</div>
+					</div>
+					<div class="span3">
 						<a href="javaScript:doSearch()" class="btn"><span
 							class="gradient"><input type="image" value="Tìm" /></span></a>
 					</div>
@@ -72,7 +84,7 @@
 		<div class="span9">
 			<div class="products-view-nav row">
 				<div class="span9">
-					<div class="span6">
+					<div class="span5">
 						<ul class="navigation rr">
 							<fmt:parseNumber var="page" integerOnly="true" type="number"
 								value="${searchCondition.page}" />
@@ -95,7 +107,7 @@
 
 						</ul>
 					</div>
-
+					<div class="span3" style="float:right;">Xem <input id="productPerPage" value="${productPerPage}" type="number" class="textboxsech" style="width: 50px;" onchange="return changeProductPerPage('search');"> sản phẩm/trang</div>
 				</div>
 			</div>
 			<ul class="row clearfix rr list-display product">
@@ -140,7 +152,7 @@
 
 			</ul>
 			<div class="products-view-nav row bottom">
-				<div class="span6">
+				<div class="span5">
 											<ul class="navigation rr">
 							<fmt:parseNumber var="page" integerOnly="true" type="number"
 								value="${searchCondition.page}" />
