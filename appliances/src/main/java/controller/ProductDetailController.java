@@ -1,8 +1,10 @@
 package controller;
 
 import global.BeanFactory;
+import global.MathHelper;
 import global.ProductSearchCondition;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import pojo.Product;
 import service.implement.ProductServiceImpl;
@@ -42,5 +45,24 @@ public class ProductDetailController {
 		model.addAttribute("product", product);
 		return "productDetail";
 	}
-	
+	@RequestMapping(value={"/productDetail/rate"},method = RequestMethod.GET)
+	public @ResponseBody List<String> rate(@RequestParam("id")int id,@RequestParam("rate")double rate)
+	{
+		List<String> data = new ArrayList<String>();
+		ProductServiceImpl productService = (ProductServiceImpl) BeanFactory
+				.getBean("productService");
+		Product product = productService.get(id);
+		int rateCount = product.getRateCount();
+		double curRate = product.getRate();// lay rate hien tai
+		curRate = (curRate*rateCount +rate)/(rateCount+1);
+		DecimalFormat oneDigit = new DecimalFormat("#.#");
+		curRate = Double.valueOf(oneDigit.format(curRate));
+		rateCount++;//cap nhat len 1;
+		product.setRateCount(rateCount);
+		product.setRate(curRate);
+		productService.update(product);
+		data.add(String.valueOf(curRate));
+		data.add(String.valueOf(rateCount));
+		return data;
+	}
 }
