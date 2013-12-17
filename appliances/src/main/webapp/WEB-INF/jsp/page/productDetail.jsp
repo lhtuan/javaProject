@@ -77,10 +77,14 @@
 							<p style="margin: 0;">Đánh giá:</p>
 						</div>
 						<div class="span3">
-							0<input id="rate" type="range" min="0" max="5" step="0.5">5
+							0<input id="rate" value="${product.rate}" type="range" min="0" max="5" step="0.5" onchange="return rateChange();">5
 						</div>
 						<div>
 							<p id="rateValue" style="color: rgb(0, 61, 255); margin: 0; padding: 0;">${product.rate} / ${product.rateCount} đánh giá</p>
+						</div>
+						<div class="span5" id="ratelink">
+							<a href="javaScript: rate(${product.id})"><img src="<c:url value='/resources/img/rate.png'/>"/>Gửi đánh giá</a>
+							<a id="userRate">${product.rate}</a>
 						</div>
 					</div>
 

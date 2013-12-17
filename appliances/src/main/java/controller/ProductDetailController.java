@@ -41,6 +41,7 @@ public class ProductDetailController {
 			}
 
 		}
+		product.setRate(MathHelper.roundDouble(product.getRate(), 1));
 		model.addAttribute("FourSameProducts", FourSameProducts);
 		model.addAttribute("product", product);
 		return "productDetail";
@@ -55,12 +56,11 @@ public class ProductDetailController {
 		int rateCount = product.getRateCount();
 		double curRate = product.getRate();// lay rate hien tai
 		curRate = (curRate*rateCount +rate)/(rateCount+1);
-		DecimalFormat oneDigit = new DecimalFormat("#.#");
-		curRate = Double.valueOf(oneDigit.format(curRate));
 		rateCount++;//cap nhat len 1;
 		product.setRateCount(rateCount);
 		product.setRate(curRate);
 		productService.update(product);
+		curRate = MathHelper.roundDouble(curRate, 1);
 		data.add(String.valueOf(curRate));
 		data.add(String.valueOf(rateCount));
 		return data;

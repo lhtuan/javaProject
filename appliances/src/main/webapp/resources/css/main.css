@@ -2340,3 +2340,16 @@ font-weight: bold;
         page-break-after: avoid;
     }
 }
+#ratelink img
+{
+	width: 20px;
+}
+
+#ratelink a
+{
+	text-decoration: none;
+}
+#userRate
+{
+	margin-left: 40px;
+}

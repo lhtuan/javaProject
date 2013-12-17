@@ -229,3 +229,27 @@ function checkAddress($address) {
 	}
 	return true;
 }
+function rateChange() {
+	$rate = $("#rate").val();
+	$("#userRate").text($rate);
+}
+/*******************************************************************************
+ * gui danh gia san pham
+ * 
+ * @param $id:
+ *            id san pham
+ */
+function rate($id) {
+	$rate = $("#rate").val();
+	$.ajax({
+		type:'GET',
+		url:'/appliances/productDetail/rate',
+		data: 'id='+$id+"&rate="+$rate,
+		success: function(data){
+			$curRate = data[0];
+			$rateCount = data[1];
+			$("#rateValue").text($curRate+" / "+$rateCount+" đánh giá");
+			makeToast("Đánh giá của bạn đã được ghi nhận", 'success', 'top-right');
+		}
+	});
+}

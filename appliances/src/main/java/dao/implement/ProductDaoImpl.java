@@ -95,7 +95,8 @@ public class ProductDaoImpl extends BaseDao implements IProductDao {
 		List<Product> Products = null;
 		try {
 			Query query = session().createQuery(
-					"from Product p where p.ProductName = '" + name + "'");
+					"from Product p where p.productName = :name");
+			query.setParameter("name", name);
 			Products = query.list();
 			LoggHelper.info("Check product exist success");
 		} catch (Exception ex) {
