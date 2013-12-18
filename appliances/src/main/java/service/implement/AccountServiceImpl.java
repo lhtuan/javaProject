@@ -1,6 +1,7 @@
 package service.implement;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
@@ -60,6 +61,21 @@ public class AccountServiceImpl implements IAccountService, UserDetailsService {
 				true,
 				(Collection<? extends GrantedAuthority>) new GrantedAuthority{ new GrantedAuthorityImpl("ROLE_USER") });*/
 		return null;
+	}
+
+	public List<Account> getAccounts(int page) {
+		// TODO Auto-generated method stub
+		return accountDao.getAccounts(page);
+	}
+
+	public int countAccouts() {
+		// TODO Auto-generated method stub
+		return accountDao.countAccount();
+	}
+
+	public Account get(String username) {
+		// TODO Auto-generated method stub
+		return accountDao.get(username);
 	}
 
 }
