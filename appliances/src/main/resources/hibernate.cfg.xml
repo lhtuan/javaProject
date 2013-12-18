@@ -9,6 +9,5 @@
   <mapping class="pojo.Userauth"/>
   <mapping class="pojo.Shoppingcart"/>
   <mapping class="pojo.Shoppingcartdetail"/>
-  <mapping class="pojo.Promotion"/>
  </session-factory>
 </hibernate-configuration>

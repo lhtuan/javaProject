@@ -1,18 +1,5 @@
 package service.implement;
 
-<<<<<<< HEAD
-import java.util.Collection;
-import java.util.List;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
-=======
->>>>>>> 13c63850a390582d5bb4630027ac8c2276597c6e
 import pojo.Account;
 import service.IAccountService;
 import dao.implement.AccountDaoImpl;
@@ -52,21 +39,6 @@ public class AccountServiceImpl implements IAccountService{
 		return "TÃ i khoáº£n khÃ´ng tá»“n táº¡i";
 	}
 
-
-	public Account get(String username) {
-		// TODO Auto-generated method stub
-		return accountDao.get(username);
-	}
-
-	public List<Account> getAccounts(int page) {
-		// TODO Auto-generated method stub
-		return accountDao.getAccounts(page);
-	}
-
-	public int countAccouts() {
-		// TODO Auto-generated method stub
-		return accountDao.countAccount();
-	}
 
 	public Account get(String username) {
 		// TODO Auto-generated method stub

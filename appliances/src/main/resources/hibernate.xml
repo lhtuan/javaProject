@@ -56,11 +56,7 @@
 	<bean id="shoppingCartDetailDao" class="dao.implement.ShoppingCartDetailDaoImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-<<<<<<< HEAD
-	<bean id="promotiondao" class="dao.implement.PromotionDAOImpl" scope="prototype">
-=======
 	<bean id="userauthDao" class="dao.implement.UserauthDaoImpl" scope="prototype">
->>>>>>> 13c63850a390582d5bb4630027ac8c2276597c6e
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<!-- service-->
@@ -79,12 +75,7 @@
 	<bean id="shoppingCartDetailService" class="service.implement.ShoppingCartDetailServiceImpl" scope="prototype">
 		<property name="shoppingCartDetailDao" ref="shoppingCartDetailDao"/>
 	</bean>
-<<<<<<< HEAD
-	<bean id="promotionService" class="service.implement.PromotionServiceImpl" scope="prototype">
-		<property name="promotionDAO" ref="promotiondao"/>
-=======
 	<bean id="userauthService" class="service.implement.UserauthServiceImpl" scope="prototype">   
 		<property name="userauthDao" ref="userauthDao"/>
->>>>>>> 13c63850a390582d5bb4630027ac8c2276597c6e
 	</bean>
 </beans>

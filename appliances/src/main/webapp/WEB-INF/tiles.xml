@@ -41,38 +41,6 @@
 		<put-attribute name="title" value="So sánh" />
 		<put-attribute name="content" value="/WEB-INF/jsp/page/compare.jsp" />
 	</definition>
-	<definition name="admin" extends="page">
-		<put-attribute name="title" value="Admin Pages" />
-		<put-attribute name="content" value="/WEB-INF/jsp/page/admin.jsp" />
-	</definition>
-	<definition name="viewpromotion" extends="page">
-		<put-attribute name="title" value="Khuyến Mãi" />
-		<put-attribute name="content" value="/WEB-INF/jsp/page/viewpromotion.jsp" />
-	</definition>
-	<definition name="viewproducts" extends="page">
-		<put-attribute name="title" value="Quản Lý Sản Phẩm" />
-		<put-attribute name="content" value="/WEB-INF/jsp/page/viewproducts.jsp" />
-	</definition>
-	<definition name="editpromotion" extends="page">
-		<put-attribute name="title" value="Cập Nhật Thông Tin Khuyến Mãi" />
-		<put-attribute name="content" value="/WEB-INF/jsp/page/editpromotion.jsp" />
-	</definition>
-	<definition name="viewuser" extends="page">
-		<put-attribute name="title" value="Quản Lý Khách Hàng" />
-		<put-attribute name="content" value="/WEB-INF/jsp/page/viewuser.jsp" />
-	</definition>
-	<definition name="addpromotion" extends="page">
-		<put-attribute name="title" value="Thêm Thông Tin Khuyến Mãi" />
-		<put-attribute name="content" value="/WEB-INF/jsp/page/addpromotion.jsp" />
-	</definition>
-	<definition name="adduser" extends="page">
-		<put-attribute name="title" value="Thêm Khách Hàng" />
-		<put-attribute name="content" value="/WEB-INF/jsp/page/adduser.jsp" />
-	</definition>
-	<definition name="edituser" extends="page">
-		<put-attribute name="title" value=" Cập Nhật Thông Tin Khách Hàng" />
-		<put-attribute name="content" value="/WEB-INF/jsp/page/edituser.jsp" />
-	</definition>
 		<definition name="search" extends="page">
 		<put-attribute name="title" value="Tìm kiếm" />
 		<put-attribute name="content" value="/WEB-INF/jsp/page/search.jsp" />

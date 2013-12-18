@@ -10,6 +10,4 @@ public interface IAccountDao {
 	public Account get(String username);
 	public List<Account> getAll();
 	public boolean isExist(String username);
-	public int countAccount();
-	public List<Account> getAccounts(int page);
 }
