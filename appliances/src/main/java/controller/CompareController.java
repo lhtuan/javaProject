@@ -38,6 +38,7 @@ public class CompareController {
 	 * @param id
 	 * @return true: da them, false:danh sach full
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = { "/compare/add" }, method = RequestMethod.POST)
 	public @ResponseBody
 	boolean addToCompareByAjax(HttpServletRequest request,
@@ -67,6 +68,7 @@ public class CompareController {
 	 * @param id
 	 * @return true: da them, false:danh sach full
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = { "/compare/add" }, method = RequestMethod.GET)
 	public String addToCompare(ModelMap model,HttpServletRequest request,
 			@RequestParam("id") int id) {
@@ -97,6 +99,7 @@ public class CompareController {
 		return "compare";
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = { "compare/delete" }, method = RequestMethod.GET)
 	public String deleteFromCompare(ModelMap model,HttpServletRequest request,
 			@RequestParam("id") int id) {

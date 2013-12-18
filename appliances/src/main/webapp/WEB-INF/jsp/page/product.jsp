@@ -83,6 +83,7 @@
 											class="icon compare ir">So sánh</span> <span class="text">So
 												sánh</span>
 									</a></li>
+									<li><a class="clearfix"><span class="text">Đánh giá ${product.rate}</span></a></li>
 								</ul>
 							</div>
 						</div>
