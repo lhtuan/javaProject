@@ -1,5 +1,18 @@
 package service.implement;
 
+
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+
+
 import pojo.Account;
 import service.IAccountService;
 import dao.implement.AccountDaoImpl;
@@ -45,4 +58,15 @@ public class AccountServiceImpl implements IAccountService{
 		return accountDao.get(username);
 	}
 
+	public List<Account> getAccounts(int page) {
+		// TODO Auto-generated method stub
+		return accountDao.getAccounts(page);
+	}
+
+	public int countAccouts() {
+		// TODO Auto-generated method stub
+		return accountDao.countAccount();
+	}
+
+	
 }

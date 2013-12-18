@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
@@ -15,7 +12,7 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
 		p:location="jdbc.properties">
 
-		</bean>
+	</bean>
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -50,32 +47,50 @@
 	<bean id="productDao" class="dao.implement.ProductDaoImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="shoppingCartDao" class="dao.implement.ShoppingCartDaoImpl" scope="prototype">
+	<bean id="shoppingCartDao" class="dao.implement.ShoppingCartDaoImpl"
+		scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="shoppingCartDetailDao" class="dao.implement.ShoppingCartDetailDaoImpl" scope="prototype">
+	<bean id="shoppingCartDetailDao" class="dao.implement.ShoppingCartDetailDaoImpl"
+		scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="userauthDao" class="dao.implement.UserauthDaoImpl" scope="prototype">
+	<bean id="userauthDao" class="dao.implement.UserauthDaoImpl"
+		scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<!-- service-->
-	<bean id="accountService" class="service.implement.AccountServiceImpl" scope="prototype">
-		<property name="accountDao" ref="accountDao"/>
+	<bean id="promotiondao" class="dao.implement.PromotionDAOImpl"
+		scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+
 	</bean>
-	<bean id="catalogService" class="service.implement.CatalogServiceImpl" scope="prototype">
-		<property name="catalogDao" ref="catalogDao"/>
+	
+	<!-- service -->
+	<bean id="accountService" class="service.implement.AccountServiceImpl"
+		scope="prototype">
+		<property name="accountDao" ref="accountDao" />
 	</bean>
-	<bean id="productService" class="service.implement.ProductServiceImpl" scope="prototype">
-		<property name="productDao" ref="productDao"/>
+	<bean id="catalogService" class="service.implement.CatalogServiceImpl"
+		scope="prototype">
+		<property name="catalogDao" ref="catalogDao" />
 	</bean>
-	<bean id="shoppingCartService" class="service.implement.ShoppingCartServiceImpl" scope="prototype">
-		<property name="shoppingCartDao" ref="shoppingCartDao"/>
+	<bean id="productService" class="service.implement.ProductServiceImpl"
+		scope="prototype">
+		<property name="productDao" ref="productDao" />
 	</bean>
-	<bean id="shoppingCartDetailService" class="service.implement.ShoppingCartDetailServiceImpl" scope="prototype">
-		<property name="shoppingCartDetailDao" ref="shoppingCartDetailDao"/>
+	<bean id="shoppingCartService" class="service.implement.ShoppingCartServiceImpl"
+		scope="prototype">
+		<property name="shoppingCartDao" ref="shoppingCartDao" />
 	</bean>
-	<bean id="userauthService" class="service.implement.UserauthServiceImpl" scope="prototype">   
-		<property name="userauthDao" ref="userauthDao"/>
+	<bean id="shoppingCartDetailService" class="service.implement.ShoppingCartDetailServiceImpl"
+		scope="prototype">
+		<property name="shoppingCartDetailDao" ref="shoppingCartDetailDao" />
+	</bean>
+	<bean id="userauthService" class="service.implement.UserauthServiceImpl"
+		scope="prototype">
+		<property name="userauthDao" ref="userauthDao" />
+	</bean>
+	<bean id="promotionService" class="service.implement.PromotionServiceImpl" scope="prototype">
+		<property name="promotionDAO" ref="promotiondao"/>
 	</bean>
 </beans>
