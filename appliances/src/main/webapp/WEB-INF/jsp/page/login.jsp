@@ -4,18 +4,17 @@
 <!DOCTYPE html>
     <div class='form'>
       <h1>Đăng nhập</h1>
+      <c:if test="${not empty error}">
+		<p style="color: red;">Tên đăng nhập hoặc mật khẩu không chính xác</p>
+	</c:if>
+      
       <div class='line'></div>
       
       <!-- If you don't want a social buttons, delete all of these code -->
         <a class='btn-facebook' href='#'>Đăng nhập qua Facebook</a>
         <a class='btn-twitter' href='#'>Connect with Twitter</a>
       <!-- Till here -->
-      <c:if test="${not empty error}">
-		<div class="errorblock">
-			Your login attempt was not successful, try again.<br /> Caused :
-			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-		</div>
-	</c:if>
+      
       
       <!-- Span class ie-placeholder is there for IE browser. IE doesn't support placeholder attribute -->
       <form name='f' class='input-form' action="<c:url value='j_spring_security_check' />" method="post">

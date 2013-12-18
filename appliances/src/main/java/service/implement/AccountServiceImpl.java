@@ -1,5 +1,6 @@
 package service.implement;
 
+<<<<<<< HEAD
 import java.util.Collection;
 import java.util.List;
 
@@ -10,11 +11,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+=======
+>>>>>>> 13c63850a390582d5bb4630027ac8c2276597c6e
 import pojo.Account;
 import service.IAccountService;
 import dao.implement.AccountDaoImpl;
 
-public class AccountServiceImpl implements IAccountService, UserDetailsService {
+public class AccountServiceImpl implements IAccountService{
 	private AccountDaoImpl accountDao;
 
 	public AccountDaoImpl getAccountDao() {
@@ -30,10 +33,10 @@ public class AccountServiceImpl implements IAccountService, UserDetailsService {
 	 */
 	public String create(Account account) {
 		if (accountDao.isExist(account.getUsername()))
-			return "Tên tài khoản đã tồn tại";
+			return "Tài khoản đã tồn tại";
 		if (accountDao.saveOrUpdate(account))
 			return null;
-		return "Lỗi chưa xac định";
+		return "Lỗi chưa xác định";
 	}
 
 	/***
@@ -44,23 +47,15 @@ public class AccountServiceImpl implements IAccountService, UserDetailsService {
 			if (accountDao.saveOrUpdate(account))
 				return null;
 			else
-				return "Lỗi chưa xác định";
+				return "Lá»—i chÆ°a xÃ¡c Ä‘á»‹nh";
 		}
-		return "Tài khoản không tồn tại";
+		return "TÃ i khoáº£n khÃ´ng tá»“n táº¡i";
 	}
 
-	public UserDetails loadUserByUsername(String username)
-			throws UsernameNotFoundException {
-		/*Account account = accountDao.get(username);
-		UserDetails user = new User(
-				username,
-				account.getPassword(),
-				true,
-				true,
-				true,
-				true,
-				(Collection<? extends GrantedAuthority>) new GrantedAuthority{ new GrantedAuthorityImpl("ROLE_USER") });*/
-		return null;
+
+	public Account get(String username) {
+		// TODO Auto-generated method stub
+		return accountDao.get(username);
 	}
 
 	public List<Account> getAccounts(int page) {

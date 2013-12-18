@@ -22,8 +22,9 @@ public class AccountDaoImpl extends BaseDao implements IAccountDao {
 		} catch (Exception ex) {
 			LoggHelper.waring("Error when save or update account: "
 					+ ex.getMessage());
+			return false;
 		}
-		return false;
+		return true;
 	}
 	@Transactional
 	public Account get(String username) {

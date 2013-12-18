@@ -28,6 +28,7 @@ public class SearchController {
 			@RequestParam(value = "catalog", required = false) String catalog,
 			@RequestParam(value = "minPrice", required = false) String minPrice,
 			@RequestParam(value = "maxPrice", required = false) String maxPrice,
+			@RequestParam(value = "order", required = false) String order,
 			@RequestParam(value = "page", required = false) String page,
 			@RequestParam(value = "productPerPage", required = false) String productPerPage) {
 		HttpSession session = request.getSession();
@@ -38,7 +39,7 @@ public class SearchController {
 				.getAttribute("searchCondition");
 		if (searchCondition == null) {
 			searchCondition = new ProductSearchCondition(name, minPrice,
-					maxPrice, page, productPerPage, catalog);
+					maxPrice, page, productPerPage, catalog,order);
 			session.setAttribute("searchCondition", searchCondition);
 		} else {
 			if (productPerPage != null) {

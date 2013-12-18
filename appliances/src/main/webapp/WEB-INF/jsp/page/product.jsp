@@ -25,7 +25,7 @@
 		<div class="span9">
 			<div class="products-view-nav row">
 				<div class="span9">
-					<div class="span6">
+					<div class="span5">
 						<ul class="navigation rr">
 							<fmt:parseNumber var="page" integerOnly="true" type="number"
 								value="${searchCondition.page}" />
@@ -48,7 +48,7 @@
 
 						</ul>
 					</div>
-
+<div class="span3" style="float:right;">Xem <input id="productPerPage" value="${productPerPage}" type="number" class="textboxsech" style="width: 50px;" onchange="return changeProductPerPage('product');"> sản phẩm/trang</div>
 				</div>
 			</div>
 			<ul class="row clearfix rr list-display product">
@@ -83,6 +83,7 @@
 											class="icon compare ir">So sánh</span> <span class="text">So
 												sánh</span>
 									</a></li>
+									<li><a class="clearfix"><span class="text">Đánh giá ${product.rate}</span></a></li>
 								</ul>
 							</div>
 						</div>

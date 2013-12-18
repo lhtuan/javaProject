@@ -7,7 +7,7 @@ public class ProductSearchCondition {
 	private String page;
 	private String productPerPage;
 	private String catalog;
-
+	private String order;
 	public String getName() {
 		return name;
 	}
@@ -34,7 +34,7 @@ public class ProductSearchCondition {
 
 	public ProductSearchCondition(String _name, String _minPrice,
 			String _maxPrice, String _page, String _productPerPage,
-			String _catalog) {
+			String _catalog,String _order) {
 		if (_minPrice != null)
 			if (_minPrice.equalsIgnoreCase("-1"))
 				_minPrice = null;
@@ -47,12 +47,16 @@ public class ProductSearchCondition {
 		if (_name != null)
 			if (_name.equalsIgnoreCase(""))
 				_name = null;
+		if (_order != null)
+			if (_order.equalsIgnoreCase("-1"))
+				_order = null;
 		name = _name;
 		minPrice = _minPrice;
 		maxPrice = _maxPrice;
 		page = _page;
 		productPerPage = _productPerPage;
 		catalog = _catalog;
+		order = _order;
 	}
 
 	public String getConditionString() {
@@ -65,6 +69,8 @@ public class ProductSearchCondition {
 			condition = condition + " and price <= " + maxPrice;
 		if (catalog != null)
 			condition = condition + " and catalog = " + catalog;
+		if(order != null)
+			condition = condition + " order by "+order;
 		return condition;
 	}
 
@@ -90,5 +96,13 @@ public class ProductSearchCondition {
 
 	public void setCatalog(String catalog) {
 		this.catalog = catalog;
+	}
+
+	public String getOrder() {
+		return order;
+	}
+
+	public void setOrder(String order) {
+		this.order = order;
 	}
 }

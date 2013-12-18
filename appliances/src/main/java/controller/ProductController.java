@@ -38,7 +38,7 @@ public class ProductController {
 				.getAttribute("searchCondition");
 		if (searchCondition == null) {
 			searchCondition = new ProductSearchCondition(name, minPrice,
-					maxPrice, page, productPerPage, catalog);
+					maxPrice, page, productPerPage, catalog,null);
 			session.setAttribute("searchCondition", searchCondition);
 		} else {
 			if (productPerPage != null) {
