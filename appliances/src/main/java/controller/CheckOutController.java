@@ -10,6 +10,7 @@ public class CheckOutController {
 	@RequestMapping(value={"/checkout"},method = RequestMethod.GET)
 	public String defalut(ModelMap model)
 	{
+		
 		return "checkout";
 	}
 }

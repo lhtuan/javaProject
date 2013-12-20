@@ -10,33 +10,28 @@
           <div class="span6 progress checkout-list">
               <ol class="rr">
               <li class="current">
-                 <h6>Billing information</h6>
+                 <h6>Thông tin hóa đơn</h6>
                 <div class="row">
                    <div class="span6 content-wrapper right-col">
                         <ul class="rr">
                           <li>
-                            <label> Firstname
-                              <input type="text" name="firstname" placeholder="Your Firstname..."/>
+                            <label> Họ tên
+                              <input type="text" name="fullname" placeholder="Họ tên..."/>
                             </label>
-                          </li>
-                          <li>
-                            <label>Lastname
-                              <input type="text" name="lastname" placeholder="Your Lastname..."/>
-                            </label>
-                          </li>
+                          </li>  
 						   <li>
                             <label>Email
-                              <input type="text" name="email" placeholder="Your Email..."/>
+                              <input type="text" name="email" placeholder="Email..."/>
                             </label>
                           </li>
 						   <li>
-                            <label>Adress
-                              <input type="text" name="adress" placeholder="Your Adress..."/>
+                            <label>Địa chỉ
+                              <input type="text" name="adress" placeholder="Địa chỉ..."/>
                             </label>
                           </li>
 						   <li>
-                            <label>Phone
-                              <input type="text" name="phone" placeholder="Your Phone..."/>
+                            <label>Số điện thoại
+                              <input type="text" name="phone" placeholder="Số điện thoại..."/>
                             </label>
                           </li>
                         </ul>
@@ -44,12 +39,12 @@
                 </div>
               </li>
 			  <li class="current">
-                 <h6>Shipping information</h6>
+                 <h6>Thông tin giao hàng</h6>
 				  <div class="row">
                    <div class="span6 content-wrapper right-col">
                         <ul class="rr">
                           <li>
-                            <label> Firstname
+                            <label>Họ tên
                               <input type="text" name="shipfirstname" placeholder="Firstname..."/>
                             </label>
                           </li>
