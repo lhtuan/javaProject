@@ -54,6 +54,11 @@ public class CatalogServiceImpl implements ICatalogService {
 		return catalogDao.getAll();
 	}
 
+	public Catalog get(int id) {
+		// TODO Auto-generated method stub
+		return catalogDao.get(id);
+	}
+
 	
 
 	

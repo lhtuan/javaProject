@@ -56,8 +56,11 @@
 
 		<div class="span9">
 			<article class="module width_3_quarter">
+				<c:if test="${deletedordererror != null }">
+						<h1 style="color: red;">${deletedordererror}</h1>
+				</c:if>
 				<header>
-					<h3 class="tabs_involved">QUẢN LÝ SẢN PHẨM</h3>
+					<h3 class="tabs_involved">Quản Lý Đơn Đặt Hàng</h3>
 				</header>
 
 				<div class="tab_container">
@@ -65,26 +68,27 @@
 						<table class="tablesorter" cellspacing="0">
 							<thead>
 								<tr>
+									<th>Người Đặt</th>
 									<th>Sản Phẩm</th>
-									<th>Thông Tin Sản Phẩm</th>
-									<th>Rate</th>
-									<th>Giá</th>
+									<th>Thời Gian</th>
+									<th>Số Lượng</th>
 									<th>Actions</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="product" items="${adminproducts}">
+							
+								<c:forEach var="order" items="${orders}">
 									<tr>
-										<td>${product.productName}</td>
-										<td>${product.productInfo}</td>
-										<td>${product.rate}</td>
-										<td>${product.price}</td>
+										<td>${order.username}</td>
+										<td>${order.sanpham}</td>
+										<td>${order.thoigian}</td>
+										<td>${order.soluong}</td>
 										<td><a
-											href="/appliances/admin/editproduct?id=${product.id}"><input
+											href="/appliances/admin/editorders?id=${order.id}"><input
 												type="image"
 												src="<c:url value ='/resources/img/images/icn_edit.png'/>"
 												title="Edit"></a> <a
-											href="/appliances/admin/deleteproduct?id=${product.id}"><input
+											href="/appliances/admin/deletedorders?id=${order.id}"><input
 												type="image"
 												src="<c:url value ='/resources/img/images/icn_trash.png'/>"
 												title="Trash" /></a></td>
@@ -99,7 +103,6 @@
 
 			</article>
 			<!-- end of content manager article -->
-
 			<div class="products-view-nav row bottom">
 
 				<div class="span3"></div>
@@ -107,24 +110,22 @@
 				<div class="span6">
 					<ul class="navigation rr">
 						<fmt:parseNumber var="page" integerOnly="true" type="number"
-							value="${adminsearchCondition.page}" />
+							value="${ipage}" />
 						<c:if test="${page>1 && totalPage !=0}">
 							<li><a
-								href="/appliances/admin/viewproducts?isKeepProduct=true&page=${page-1}"
+								href="/appliances/admin/vieworders?page=${page-1}"
 								class="arrow prev ir">Previous</a></li>
 						</c:if>
-						<c:forEach var="i" begin="1" end="${admintotalPage}">
+						<c:forEach var="i" begin="1" end="${totalPage}">
 							<c:if test="${i == page}">
 								<li class="current"><a href="">${i}</a></li>
 							</c:if>
 							<c:if test="${i != page}">
-								<li><a
-									href="/appliances/admin/viewproducts?isKeepProduct=true&page=${i}">${i}</a></li>
+								<li><a href="/appliances/admin/vieworders?page=${i}">${i}</a></li>
 							</c:if>
 						</c:forEach>
-						<c:if test="${page<admintotalPage}">
-							<li><a
-								href="/appliances/admin/viewproducts?isKeepProduct=true&page=${page+1}"
+						<c:if test="${page<totalPage}">
+							<li><a href="/appliances/admin/vieworders?page=${page+1}"
 								class="arrow next ir">Next</a></li>
 						</c:if>
 
@@ -132,7 +133,6 @@
 				</div>
 
 			</div>
-
 		</div>
 	</div>
 

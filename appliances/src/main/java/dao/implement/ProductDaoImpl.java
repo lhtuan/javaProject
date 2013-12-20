@@ -46,11 +46,11 @@ public class ProductDaoImpl extends BaseDao implements IProductDao {
 		int page = Integer.parseInt(searchCondition.getPage());
 		int numberProductOfPage = Integer.parseInt(searchCondition
 				.getNumberProductOfPage());
-		String hql = "from Product " + searchCondition.getConditionString();
+		String hql = "from Product " + searchCondition.getConditionString() + "and deleted = false";
 		try {
 			Query query = session().createQuery(hql);
 			if (searchCondition.getName() != null) {
-				query.setString(0, "%" + searchCondition.getName() + "%");
+				query.setString(0, "%" + searchCondition.getName() + "%" );
 			}
 			query.setFirstResult(numberProductOfPage * (page - 1));
 			query.setMaxResults(numberProductOfPage);
@@ -69,7 +69,7 @@ public class ProductDaoImpl extends BaseDao implements IProductDao {
 		try {
 			Query query = session().createQuery(hql);
 			if (searchCondition.getName() != null) {
-				query.setString(0, "%" + searchCondition.getName() + "%");
+				query.setString(0, "%" + searchCondition.getName() + "%"+ "and deleted = false");
 			}
 			count = Integer.parseInt(query.list().get(0).toString());
 			LoggHelper.info("Get products success");

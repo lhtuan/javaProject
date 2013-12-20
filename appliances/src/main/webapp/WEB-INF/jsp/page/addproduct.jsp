@@ -59,25 +59,22 @@
 
 				<div id="adm_right">
 					<header>
-						<h3 class="tabs_involved">Thêm Khách Hàng</h3>
+						<h3 class="tabs_involved">Thêm Sản Phẩm</h3>
 					</header>
-					<c:if test="${registerError != null }">
-						<h1 style="color: red;">${registerError}</h1>
-					</c:if>
-					<form action="/appliances/admin/complateadduser" method="get">
+					<form action="/appliances/admin/completeaddproduct" method="get">
 						<fieldset>
-							<label>Username</label>
-							 <input type="text" value = "" name = "username"> 
-							 <label>Password</label>
-							<input type="text" value = "" name = "password"> 
-							<label>FullName</label>
-							 <input type="text" value = "" name = "fullname"> 
-							 <label>Email</label> 
-							 <input type="text" value = "" name = "email" >
-							<label>Phone</label> 
-							<input type="text" value = "" name = "phone">
-							 <label>Adress</label>
-							<input type="text" value = "" name = "adress">
+							<label>Tên Sản Phẩm</label> 
+							<input type="text" name = "productname" vaule = ""> 
+							<label>Loại	Sản Phẩm</label>
+							 <select name = "loaisanpham">
+							 <c:forEach var="catalog" items="${catalogs}">
+								<option value ="${catalog.id}">${catalog.catalogName}</option>
+							</c:forEach>
+							</select> 
+							<label>Thông Tin Sản Phẩm</label>
+							<textarea rows="12" name = "Description" value = ""></textarea>
+							<label>Giá</label> 
+							<input type="text " name = "gia" value = "">
 						</fieldset>
 						<input type="submit" value="Thêm">
 					</form>

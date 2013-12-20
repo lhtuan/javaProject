@@ -59,25 +59,21 @@
 
 				<div id="adm_right">
 					<header>
-						<h3 class="tabs_involved">Thêm Khách Hàng</h3>
+						<h3 class="tabs_involved">Thêm Đơn Hàng</h3>
 					</header>
-					<c:if test="${registerError != null }">
-						<h1 style="color: red;">${registerError}</h1>
+						<c:if test="${addordererror != null }">
+						<h1 style="color: red;">${addordererror}</h1>
 					</c:if>
-					<form action="/appliances/admin/complateadduser" method="get">
+					<form action="/appliances/admin/completeaddorder" method="get">
 						<fieldset>
-							<label>Username</label>
-							 <input type="text" value = "" name = "username"> 
-							 <label>Password</label>
-							<input type="text" value = "" name = "password"> 
-							<label>FullName</label>
-							 <input type="text" value = "" name = "fullname"> 
-							 <label>Email</label> 
-							 <input type="text" value = "" name = "email" >
-							<label>Phone</label> 
-							<input type="text" value = "" name = "phone">
-							 <label>Adress</label>
-							<input type="text" value = "" name = "adress">
+							<label>Người Đặt</label>
+							 <input type="text" name = "username" value = ""> 
+							 <label>Mã Sản Phẩm</label>
+							  <input type="text" name = "idproduct" value = "">
+							   <label>Thời Gian</label> 
+							   <input	type="text" name = "thoigian" value = ""> 
+							   <label>Số Lượng</label>
+							    <input type="text" name = "soluong" value = "">
 						</fieldset>
 						<input type="submit" value="Thêm">
 					</form>

@@ -21,24 +21,13 @@ import service.implement.PromotionServiceImpl;
 @Controller
 public class PromotionController {
 
+	PromotionServiceImpl promotionService = (PromotionServiceImpl)BeanFactory.getBean("promotionService");
 	private int numberPromotionofPage = 10;
 	@RequestMapping(value={"/admin/viewpromotion"},method = RequestMethod.GET)
 	public String Promotions(ModelMap model,	HttpServletRequest request,
 			@RequestParam(value = "page",required=false) String page)
 	{
-		String ipage = "";
-		if(page ==null)
-			page="1";
-		ipage = page;
-			
-		int intpage = Integer.parseInt(page);
-		PromotionServiceImpl promotionService = (PromotionServiceImpl)BeanFactory.getBean("promotionService");
-		List<Promotion> Promotions = promotionService.getPromotions(intpage);
-		int PromotionCount = promotionService.CountPromotion();
-		int totalPage = (PromotionCount/numberPromotionofPage) + ((PromotionCount/numberPromotionofPage) > 0 ? 1 : 0);
-		model.addAttribute("totalPage",totalPage);
-		model.addAttribute("Promotions",Promotions);
-		model.addAttribute("ipage",ipage);
+		getPromotions(model, page);
 		return "viewpromotion";
 	}
 	@RequestMapping(value={"/admin/editpromotion"},method = RequestMethod.GET)
@@ -63,7 +52,7 @@ public class PromotionController {
 		
 		
 		PromotionServiceImpl promotionService = (PromotionServiceImpl)BeanFactory.getBean("promotionService");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date mdatestart = sdf.parse(datestart);
 		Date mdateend = sdf.parse(dateend);
 		int mvalueslaeoff = Integer.parseInt(valuesaleoff);
@@ -83,17 +72,7 @@ public class PromotionController {
 		
 		promotionService.update(promotion);
 		
-		String ipage = "";
-		if(page ==null)
-			page="1";
-		ipage = page;
-		int intpage = Integer.parseInt(page);
-		List<Promotion> Promotions = promotionService.getPromotions(intpage);
-		int PromotionCount = promotionService.CountPromotion();
-		int totalPage = (PromotionCount/numberPromotionofPage) + ((PromotionCount/numberPromotionofPage) > 0 ? 1 : 0);
-		model.addAttribute("totalPage",totalPage);
-		model.addAttribute("Promotions",Promotions);
-		model.addAttribute("ipage",ipage);
+		getPromotions(model, page);
 		return "viewpromotion";
 	}
 	@RequestMapping(value={"/admin/deletepromotion"},method = RequestMethod.GET)
@@ -102,26 +81,36 @@ public class PromotionController {
 			@RequestParam(value = "page",required=false) String page)
 	{
 		int idPromotion = Integer.parseInt(id);
-		PromotionServiceImpl promotionService = (PromotionServiceImpl)BeanFactory.getBean("promotionService");
+		
 		//Promotion promotion = promotionService.get(idPromotion);
 		 promotionService.Delete(idPromotion);
-		String ipage = "";
-		if(page ==null)
-			page="1";
-		ipage = page;
+		
 			
-		int intpage = Integer.parseInt(page);
-		List<Promotion> Promotions = promotionService.getPromotions(intpage);
-		int PromotionCount = promotionService.CountPromotion();
-		int totalPage = (PromotionCount/numberPromotionofPage) + ((PromotionCount/numberPromotionofPage) > 0 ? 1 : 0);
-		model.addAttribute("totalPage",totalPage);
-		model.addAttribute("Promotions",Promotions);
-		model.addAttribute("ipage",ipage);
+		Promotion promotion = promotionService.get(idPromotion);
+		promotion.setDeleted(true);
+		promotionService.update(promotion);
+		
+		getPromotions(model, page);
+		
+		
 		return "viewpromotion";
 	}
 	@RequestMapping(value={"/admin/addpromotion"},method = RequestMethod.GET)
 	public String AddPromotion(ModelMap model)
 	{
 		return "addpromotion";
+	}
+	public void getPromotions(ModelMap model , String page){
+		String ipage = "";
+		if(page ==null)
+			page="1";
+		ipage = page;
+		int intpage = Integer.parseInt(page);
+		List<Promotion> Promotions = promotionService.getPromotions(intpage);
+		int PromotionCount = promotionService.CountPromotion();
+		int totalPage = (PromotionCount/numberPromotionofPage) + ((PromotionCount % numberPromotionofPage) > 0 ? 1 : 0);
+		model.addAttribute("totalPage",totalPage);
+		model.addAttribute("Promotions",Promotions);
+		model.addAttribute("ipage",ipage);
 	}
 }

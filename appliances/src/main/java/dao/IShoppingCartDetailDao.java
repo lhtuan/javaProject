@@ -9,4 +9,6 @@ public interface IShoppingCartDetailDao {
 	public Shoppingcartdetail get(int id);
 	public List<Shoppingcartdetail> getAll();
 	public boolean isExist(int id);
+	public List<Shoppingcartdetail> Shoppingcartdetails (int page);
+	public int CountShoppingcartdetail();
 }

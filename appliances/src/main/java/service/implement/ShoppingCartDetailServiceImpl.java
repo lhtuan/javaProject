@@ -24,16 +24,31 @@ public class ShoppingCartDetailServiceImpl implements IShoppingCartDetailService
 		if (shoppingCartDetailDao.saveOrUpdate(cartDetail))
 			return null;
 		else
-			return "Lỗi chưa xác định";
+			return "Lá»—i chÆ°a xÃ¡c Ä‘á»‹nh";
 	}
 
 	public String update(Shoppingcartdetail cartDetail) {
 		if (!shoppingCartDetailDao.isExist(cartDetail.getId()))
-			return "Chi tiết giỏ hàng không tồn tại";
+			return "Chi tiáº¿t giá»� hÃ ng khÃ´ng tá»“n táº¡i";
 		else if (shoppingCartDetailDao.saveOrUpdate(cartDetail))
 			return null;
 		else
-			return "Lỗi chưa xác định";
+			return "Lá»—i chÆ°a xÃ¡c Ä‘á»‹nh";
+	}
+
+	public List<Shoppingcartdetail> shoppingcartdetails(int page) {
+		// TODO Auto-generated method stub
+		return shoppingCartDetailDao.Shoppingcartdetails(page);
+	}
+
+	public int Countshoppingcartdetail() {
+		// TODO Auto-generated method stub
+		return shoppingCartDetailDao.CountShoppingcartdetail();
+	}
+
+	public Shoppingcartdetail get(int id) {
+		// TODO Auto-generated method stub
+		return shoppingCartDetailDao.get(id);
 	}
 
 }

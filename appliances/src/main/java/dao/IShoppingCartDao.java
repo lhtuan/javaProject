@@ -11,4 +11,5 @@ public interface IShoppingCartDao {
 	public List<Shoppingcart> getAll();
 	public List<Shoppingcart> getByAccount(String username);
 	boolean isExist(int id);
+	
 }

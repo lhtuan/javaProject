@@ -8,4 +8,5 @@ public interface ICatalogService {
 	public String add(Catalog catalog);
 	public String update(Catalog catalog);
 	public List<Catalog> getAll();
+	public Catalog get(int id);
 }

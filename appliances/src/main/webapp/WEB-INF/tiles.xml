@@ -77,6 +77,26 @@
 		<put-attribute name="title" value=" Thanh Toán" />
 		<put-attribute name="content" value="/WEB-INF/jsp/page/checkout.jsp" />
 	</definition>
+	<definition name="vieworders" extends="page">
+		<put-attribute name="title" value="Quản lý hóa đơn" />
+		<put-attribute name="content" value="/WEB-INF/jsp/page/vieworders.jsp" />
+	</definition>
+	<definition name="addorders" extends="page">
+		<put-attribute name="title" value="Thêm hóa đơn" />
+		<put-attribute name="content" value="/WEB-INF/jsp/page/addorders.jsp" />
+	</definition>
+	<definition name="editorders" extends="page">
+		<put-attribute name="title" value=" Cập nhật hóa đơn" />
+		<put-attribute name="content" value="/WEB-INF/jsp/page/editorders.jsp" />
+	</definition>
+	<definition name="editproduct" extends="page">
+		<put-attribute name="title" value=" Cập nhật thông tin sản phẩm" />
+		<put-attribute name="content" value="/WEB-INF/jsp/page/editproduct.jsp" />
+	</definition>
+	<definition name="addproduct" extends="page">
+		<put-attribute name="title" value="Thêm sản phẩm" />
+		<put-attribute name="content" value="/WEB-INF/jsp/page/addproduct.jsp" />
+	</definition>
 		<definition name="search" extends="page">
 		<put-attribute name="title" value="Tìm kiếm" />
 		<put-attribute name="content" value="/WEB-INF/jsp/page/search.jsp" />

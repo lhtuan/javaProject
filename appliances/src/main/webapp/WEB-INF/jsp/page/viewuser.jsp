@@ -59,7 +59,9 @@
 				<header>
 					<h3 class="tabs_involved">Quản Lý Khách Hàng</h3>
 				</header>
-
+				<c:if test="${DeletedError != null }">
+					<h1 style="color: red;">${DeletedError}</h1>
+				</c:if>
 				<div class="tab_container">
 					<div id="tab1" class="tab_content">
 						<table class="tablesorter" cellspacing="0">

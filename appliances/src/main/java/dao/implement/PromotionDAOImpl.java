@@ -76,7 +76,7 @@ public class PromotionDAOImpl extends BaseDao implements IPromotionDAO{
 	public List<Promotion> getPromotions(int page) {
 		// TODO Auto-generated method stub
 		 int numberPromotionOfPage = 10;
-		Query query = session().createQuery("from Promotion");
+		Query query = session().createQuery("from Promotion c where c.deleted = false ");
 		List<Promotion> promotions = null;
 		try {
 			query.setFirstResult(numberPromotionOfPage * (page - 1));
@@ -92,13 +92,13 @@ public class PromotionDAOImpl extends BaseDao implements IPromotionDAO{
 	public int CountPromotion() {
 		// TODO Auto-generated method stub
 		int count = 0;
-		Query query = session().createQuery("select count(*) from Promotion ");
+		Query query = session().createQuery("select count(*) from Promotion c where c.deleted = false ");
 		List<Promotion> promotions = null;
 		try {
 			count = Integer.parseInt(query.list().get(0).toString());
-			LoggHelper.info("Get all Promotion success");
+			LoggHelper.info("count Promotion success");
 		} catch (Exception ex) {
-			LoggHelper.waring("Error when get all Promotion: " + ex.getMessage());
+			LoggHelper.waring("Error when count Promotion: " + ex.getMessage());
 		}
 		return count;
 	}

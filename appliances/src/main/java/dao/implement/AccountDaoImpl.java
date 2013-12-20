@@ -57,7 +57,7 @@ public class AccountDaoImpl extends BaseDao implements IAccountDao {
 	public int countAccount() {
 		// TODO Auto-generated method stub
 		int count = 0;
-		Query query = session().createQuery("select count(*) from Account ");
+		Query query = session().createQuery("select count(*) from Account c where c.banned = false ");
 		List<Account> accounts  = null;
 		try {
 			count = Integer.parseInt(query.list().get(0).toString());
@@ -71,7 +71,7 @@ public class AccountDaoImpl extends BaseDao implements IAccountDao {
 	public List<Account> getAccounts(int page) {
 		// TODO Auto-generated method stub
 		 int numberPromotionOfPage = 10;
-			Query query = session().createQuery("from Account");
+			Query query = session().createQuery("from Account c where c.banned = false");
 			List<Account> accounts = null;
 			try {
 				query.setFirstResult(numberPromotionOfPage * (page - 1));

@@ -59,26 +59,24 @@
 
 				<div id="adm_right">
 					<header>
-						<h3 class="tabs_involved">Thêm Khách Hàng</h3>
+						<h3 class="tabs_involved">Cập Nhật Thông Tin Khách Hàng</h3>
 					</header>
-					<form>
+					<c:if test="${editError != null }">
+						<h1 style="color: red;">${editError}</h1>
+					</c:if>
+					<form action="/appliances/admin/complateupdate" method="get">
 						<fieldset>
-							<label>Username</label>
-							 <input type="text" value = "${account.username}" name = "username"> 
-							 <label>Password</label>
-							<input type="text" value = "${account.password}" name = "password"> 
-							<label>FullName</label>
-							 <input type="text" value = "${account.fullName}" name = "fullname"> 
-							 <label>Email</label> 
-							 <input type="text" value = "${account.email}" name = "email" >
-							<label>Phone</label> 
-							<input type="text" value = "${account.phone}" name = "phone">
-							 <label>Adress</label>
-							<input type="text" value = "${account.address}" name = "adress">
-							 <label>Authority</label>
-							<input type="text" value = "" name = "authority" block = true>
+							<label>Username</label> <input type="text"
+								value="${account.username}" name="username"  readonly="readonly">
+							<label>Password</label> <input type="text"
+								value="${account.password}" name="password"> <label>FullName</label>
+							<input type="text" value="${account.fullName}" name="fullname">
+							<label>Email</label> <input type="text" value="${account.email}"
+								name="email"> <label>Phone</label> <input type="text"
+								value="${account.phone}" name="phone"> <label>Adress</label>
+							<input type="text" value="${account.address}" name="adress">
 						</fieldset>
-						<input type="submit" value="Thêm">
+						<input type="submit" value="Save">
 					</form>
 				</div>
 			</article>

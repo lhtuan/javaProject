@@ -58,28 +58,29 @@
 			<article class="module2 width_3_quarter">
 
 				<div id="adm_right">
-					<header>
-						<h3 class="tabs_involved">Thêm Khách Hàng</h3>
-					</header>
-					<c:if test="${registerError != null }">
-						<h1 style="color: red;">${registerError}</h1>
+				<c:if test="${erroreditproduct != null }">
+						<h1 style="color: red;">${erroreditproduct}</h1>
 					</c:if>
-					<form action="/appliances/admin/complateadduser" method="get">
+					<header>
+						<h3 class="tabs_involved">Cập Nhật Sản Phẩmm</h3>
+					</header>
+					<form action="/appliances/admin/completeeditproduct" method="get">
 						<fieldset>
-							<label>Username</label>
-							 <input type="text" value = "" name = "username"> 
-							 <label>Password</label>
-							<input type="text" value = "" name = "password"> 
-							<label>FullName</label>
-							 <input type="text" value = "" name = "fullname"> 
-							 <label>Email</label> 
-							 <input type="text" value = "" name = "email" >
-							<label>Phone</label> 
-							<input type="text" value = "" name = "phone">
-							 <label>Adress</label>
-							<input type="text" value = "" name = "adress">
+							<label>Tên Sản Phẩm</label> 
+							<input type="text" name = "productname" value = "${product.productName}" readonly="readonly"/> 
+							<label>Loại	Sản Phẩm</label>
+							 <select name = "loaisanpham">
+							 <c:forEach var="catalog" items="${catalogs}">
+								<option value ="${catalog.id}">${catalog.catalogName}</option>
+							</c:forEach>
+							</select> 
+							<label>Thông Tin Sản Phẩm</label>
+							<textarea rows="12" name = "Description" value = "">${product.description}</textarea>
+							<label>Giá</label> 
+							<input type="text" name = "gia" value = "${product.price}"/> 
+							<input type="hidden" name = "id" value = "${product.id}">
 						</fieldset>
-						<input type="submit" value="Thêm">
+						<input type="submit" value="Cập Nhật">
 					</form>
 				</div>
 			</article>

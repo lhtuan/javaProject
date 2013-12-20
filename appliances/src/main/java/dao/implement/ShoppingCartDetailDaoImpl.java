@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import pojo.Promotion;
 import pojo.Shoppingcartdetail;
 import dao.IShoppingCartDetailDao;
 import dao.base.BaseDao;
@@ -44,7 +45,7 @@ public class ShoppingCartDetailDaoImpl extends BaseDao implements
 	public List<Shoppingcartdetail> getAll() {
 		List<Shoppingcartdetail> shoppingCartDetails = null;
 		try {
-			Query query = session().createQuery("from Shoppingcartdetail");
+			Query query = session().createQuery("from Shoppingcartdetail c where c.deleted = false");
 			shoppingCartDetails = query.list();
 			LoggHelper.info("Get shopping cart details success");
 		} catch (Exception ex) {
@@ -52,9 +53,39 @@ public class ShoppingCartDetailDaoImpl extends BaseDao implements
 		}
 		return shoppingCartDetails;
 	}
-
+	@Transactional
 	public boolean isExist(int id) {
 		return get(id) == null ? false : true;
+	}
+	@Transactional
+	public List<Shoppingcartdetail> Shoppingcartdetails(int page) {
+		// TODO Auto-generated method stub
+		 int numberPromotionOfPage = 10;
+			Query query = session().createQuery("from Shoppingcartdetail c where c.deleted = false ");
+			List<Shoppingcartdetail> Shoppingcartdetails = null;
+			try {
+				query.setFirstResult(numberPromotionOfPage * (page - 1));
+				query.setMaxResults(numberPromotionOfPage);
+				Shoppingcartdetails = query.list();
+				LoggHelper.info("Get Shoppingcartdetails success");
+			} catch (Exception ex) {
+				LoggHelper.waring("Error when get Shoppingcartdetails: " + ex.getMessage());
+			}
+			return Shoppingcartdetails;
+	}
+	@Transactional
+	public int CountShoppingcartdetail() {
+		// TODO Auto-generated method stub
+		int count = 0;
+		Query query = session().createQuery("select count(*) from Shoppingcartdetail ");
+		List<Shoppingcartdetail> Shoppingcartdetails = null;
+		try {
+			count = Integer.parseInt(query.list().get(0).toString());
+			LoggHelper.info("count Shoppingcartdetail success");
+		} catch (Exception ex) {
+			LoggHelper.waring("Error when count Shoppingcartdetail: " + ex.getMessage());
+		}
+		return count;
 	}
 
 }

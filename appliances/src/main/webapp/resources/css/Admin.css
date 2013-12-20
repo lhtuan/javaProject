@@ -649,7 +649,7 @@ margin: -1px 0 5px 0;
 text-transform: uppercase;
 }
 
-fieldset input[type=text] ,[type=password]  {
+fieldset input[type=text] ,[type=password] ,[type=number] {
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
@@ -668,7 +668,7 @@ width: 90%;
 margin: 0 10px 1px;
 }
 
-fieldset input[type=text], [type=password]:focus {
+fieldset input[type=text], [type=password]  ,[type=number] :focus {
 outline: none;
 border: 1px solid #77BACE;
 -webkit-box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;

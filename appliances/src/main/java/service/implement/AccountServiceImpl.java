@@ -43,14 +43,14 @@ public class AccountServiceImpl implements IAccountService{
 	 * Cap nhat thong tin tai khoan/ null: cap nhat thanh cong /String : loi
 	 */
 	public String update(Account account) {
-		if (accountDao.isExist(account.getUsername())) {
+		//if (accountDao.isExist(account.getUsername())) {
 			if (accountDao.saveOrUpdate(account))
 				return null;
 			else
 				return "Lá»—i chÆ°a xÃ¡c Ä‘á»‹nh";
 		}
-		return "TÃ i khoáº£n khÃ´ng tá»“n táº¡i";
-	}
+	//	return "TÃ i khoáº£n khÃ´ng tá»“n táº¡i";
+	//}
 
 
 	public Account get(String username) {
