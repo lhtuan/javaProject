@@ -156,7 +156,7 @@
               <li class="current">
                 <h6>Order review</h6>
                 <div class="row">
-                   <div class="span content-wrapper ">
+                   <div class="span6 content-wrapper ">
                         <ul class="rr  cart">
 						 <table>
 							  <tr class="headers">
