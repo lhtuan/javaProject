@@ -78,7 +78,7 @@ public class PromotionController {
 			promotion.setPromotionName(promtionname);
 		}
 		else{
-			promotion = new Promotion(mdatestart, mdateend, promtionname, mvalueslaeoff);
+			promotion = new Promotion(promtionname,mdatestart, mdateend,  mvalueslaeoff,false);
 		}
 		
 		promotionService.update(promotion);

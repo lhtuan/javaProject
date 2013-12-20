@@ -1,16 +1,14 @@
 package pojo;
 
-// Generated Dec 6, 2013 8:18:51 PM by Hibernate Tools 3.4.0.CR1
-
-import static javax.persistence.GenerationType.IDENTITY;
+// Generated Dec 20, 2013 9:23:39 AM by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -58,7 +56,7 @@ public class Catalog implements java.io.Serializable {
 		this.catalogName = catalogName;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "catalog")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "catalog")
 	public Set<Product> getProducts() {
 		return this.products;
 	}

@@ -1,17 +1,15 @@
 package pojo;
 
-// Generated Dec 6, 2013 8:18:51 PM by Hibernate Tools 3.4.0.CR1
-
-import static javax.persistence.GenerationType.IDENTITY;
+// Generated Dec 20, 2013 9:23:39 AM by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -81,7 +79,7 @@ public class Shoppingcart implements java.io.Serializable {
 		this.orderDate = orderDate;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "shoppingcart")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "shoppingcart")
 	public Set<Shoppingcartdetail> getShoppingcartdetails() {
 		return this.shoppingcartdetails;
 	}

@@ -1,6 +1,6 @@
 package pojo;
 
-// Generated Dec 9, 2013 9:22:25 AM by Hibernate Tools 3.4.0.CR1
+// Generated Dec 20, 2013 9:23:39 AM by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,6 +29,7 @@ public class Account implements java.io.Serializable {
 	private String email;
 	private String phone;
 	private String address;
+	private Boolean banned;
 	private Set<Shoppingcart> shoppingcarts = new HashSet<Shoppingcart>(0);
 	private Set<Userauth> userauths = new HashSet<Userauth>(0);
 
@@ -43,7 +44,7 @@ public class Account implements java.io.Serializable {
 
 	public Account(String username, String password, boolean isEnable,
 			String fullName, String email, String phone, String address,
-			Set<Shoppingcart> shoppingcarts, Set<Userauth> userauths) {
+			Boolean banned, Set<Shoppingcart> shoppingcarts, Set<Userauth> userauths) {
 		this.username = username;
 		this.password = password;
 		this.isEnable = isEnable;
@@ -51,6 +52,7 @@ public class Account implements java.io.Serializable {
 		this.email = email;
 		this.phone = phone;
 		this.address = address;
+		this.banned = banned;
 		this.shoppingcarts = shoppingcarts;
 		this.userauths = userauths;
 	}
@@ -117,6 +119,15 @@ public class Account implements java.io.Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	@Column(name = "Banned")
+	public Boolean getBanned() {
+		return this.banned;
+	}
+
+	public void setBanned(Boolean banned) {
+		this.banned = banned;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")

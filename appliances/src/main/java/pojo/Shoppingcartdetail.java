@@ -1,6 +1,6 @@
 package pojo;
 
-// Generated Dec 6, 2013 8:18:51 PM by Hibernate Tools 3.4.0.CR1
+// Generated Dec 20, 2013 9:23:39 AM by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +27,7 @@ public class Shoppingcartdetail implements java.io.Serializable {
 	private Product product;
 	private Shoppingcart shoppingcart;
 	private int number;
+	private Boolean deleted;
 
 	public Shoppingcartdetail() {
 	}
@@ -36,6 +37,14 @@ public class Shoppingcartdetail implements java.io.Serializable {
 		this.product = product;
 		this.shoppingcart = shoppingcart;
 		this.number = number;
+	}
+
+	public Shoppingcartdetail(Product product, Shoppingcart shoppingcart,
+			int number, Boolean deleted) {
+		this.product = product;
+		this.shoppingcart = shoppingcart;
+		this.number = number;
+		this.deleted = deleted;
 	}
 
 	@Id
@@ -76,6 +85,15 @@ public class Shoppingcartdetail implements java.io.Serializable {
 
 	public void setNumber(int number) {
 		this.number = number;
+	}
+
+	@Column(name = "Deleted")
+	public Boolean getDeleted() {
+		return this.deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
 	}
 
 }
