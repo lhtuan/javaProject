@@ -73,17 +73,17 @@
 										</a>
 									</div>
 									<div class="span3">
-										<span class="price"> <span class="value">${product.price}</span>
+										<span class="price"> <span class="value"><fmt:formatNumber value="${product.price}"  pattern="###,###,###.# đ" /> </span>
 										</span>
 									</div>
 								</div>
 								<hr />
 								<ul class="rr options clearfix">
-									<li><a href="/appliances/compare/add?id=${product.id}" class="clearfix"> <span
+									<li><a href="javaScript: callAjaxAddCompare(${product.id})" class="clearfix"> <span
 											class="icon compare ir">So sánh</span> <span class="text">So
 												sánh</span>
 									</a></li>
-									<li><a class="clearfix"><span class="text">Đánh giá ${product.rate}</span></a></li>
+									<li><a class="clearfix"><span class="text">Đánh giá <fmt:formatNumber value="${product.rate}" maxFractionDigits="1" minFractionDigits="1"/> </span></a></li>
 								</ul>
 							</div>
 						</div>

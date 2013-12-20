@@ -103,7 +103,10 @@ function callAjaxAddCompare(id) {
 		url : "/appliances/compare/add",
 		date : "id=" + id,
 		success : function(response) {
-
+			if(response)
+				makeToast("Đã thêm vào danh sách so sánh", 'success', 'top-right');
+			else
+				makeToast("Danh sách đầy", 'error', 'top-right');
 		}
 
 	});

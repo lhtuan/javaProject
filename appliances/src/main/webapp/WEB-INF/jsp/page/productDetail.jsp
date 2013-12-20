@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <div role="main" class="container product-details">
 	<div class="row">
@@ -49,17 +50,13 @@
 								<span class="text">Thêm vào giỏ</span>
 						</a></li>
 						<li class="price-wrapper"><span class="price"> <span
-								class="value">${product.price }</span>
+								class="value"><fmt:formatNumber value="${product.price}"  pattern="###,###,###.# đ" /></span>
 						</span></li>
 					</ul>
 
 					<hr />
 
-					<ul class="rr options clearfix">
-						<li><a href="#" class="clearfix"> <span
-								class="icon wishlist ir">Wishlist</span> <span class="text">Add
-									to wishlist</span>
-						</a></li>
+					<ul class="rr options clearfix">						
 						<li><a href="/appliances/compare/add?id=${product.id}"
 							class="clearfix"> <span class="icon compare ir">Compare</span>
 								<span class="text">So sánh</span>

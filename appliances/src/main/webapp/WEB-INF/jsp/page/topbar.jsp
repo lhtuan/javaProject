@@ -10,9 +10,20 @@
 					<li><a href="#"> <span class="ir icon my-account"></span>
 							<span>${username}</span>
 					</a></li>
+					<li><a href="/appliances/checkout"> <span
+							class="ir icon checkout"></span> <span>Thanh toán</span>
+					</a></li>
+					<c:set var="admin" value="admin"/>
+					<c:if test="${username == admin}">
+					<li>
+	                  <a href="/appliances/admin">
+	                    <span class="ir icon my-wishlist"></span>
+	                    <span>Trang admin</span>
+	                  </a>
+	                </li>
+					</c:if>
 				</c:if>
-				<li><a href="#"> <span class="ir icon checkout"></span> <span>Thanh
-							toán</span>
+				<li><a href="/appliances/compare"> <span class="ir icon checkout"></span> <span>So sánh</span>
 				</a></li>
 				<c:if test="${username !=null}">
 					<li><a href="<c:url value='j_spring_security_logout'/>"> <span class="ir icon log-in"></span> <span>Đăng
@@ -20,7 +31,7 @@
 					</a></li>
 				</c:if>
 				<c:if test="${username ==null}">
-					<li><a href="#"> <span class="ir icon log-in"></span> <span>Đăng
+					<li><a href="/appliances/login"> <span class="ir icon log-in"></span> <span>Đăng
 								nhập</span>
 					</a></li>
 				</c:if>
