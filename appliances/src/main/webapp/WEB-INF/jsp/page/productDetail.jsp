@@ -57,7 +57,7 @@
 					<hr />
 
 					<ul class="rr options clearfix">						
-						<li><a href="/appliances/compare/add?id=${product.id}"
+						<li><a href="javaScript: callAjaxAddCompare(${product.id})"
 							class="clearfix"> <span class="icon compare ir">Compare</span>
 								<span class="text">So sánh</span>
 						</a></li>

@@ -32,12 +32,17 @@ public class Shoppingcart implements java.io.Serializable {
 	private Integer id;
 	private Account account;
 	private Date orderDate;
-	private Set<Shoppingcartdetail> shoppingcartdetails = new HashSet<Shoppingcartdetail>(0);
+	private Set<Shoppingcartdetail> shoppingcartdetails = new HashSet<Shoppingcartdetail>(
+			0);
 	private String shipaddress;
 	private String shipphone;
 	private String shipfullname;
 	private String shipemail;
+<<<<<<< HEAD
 	private Boolean deleted;
+=======
+
+>>>>>>> 6b8d7102543985194e2d254ecf9300de9dc2c69c
 	public Shoppingcart() {
 	}
 
@@ -46,7 +51,8 @@ public class Shoppingcart implements java.io.Serializable {
 		this.orderDate = orderDate;
 	}
 
-	public Shoppingcart(Account account, Date orderDate, Set<Shoppingcartdetail> shoppingcartdetails) {
+	public Shoppingcart(Account account, Date orderDate,
+			Set<Shoppingcartdetail> shoppingcartdetails) {
 		this.account = account;
 		this.orderDate = orderDate;
 		this.shoppingcartdetails = shoppingcartdetails;
@@ -88,10 +94,12 @@ public class Shoppingcart implements java.io.Serializable {
 		return this.shoppingcartdetails;
 	}
 
-	public void setShoppingcartdetails(Set<Shoppingcartdetail> shoppingcartdetails) {
+	public void setShoppingcartdetails(
+			Set<Shoppingcartdetail> shoppingcartdetails) {
 		this.shoppingcartdetails = shoppingcartdetails;
 	}
-	@Column(name = "ShipAddress")
+
+	@Column(name = "ShipAddress", length = 50)
 	public String getShipaddress() {
 		return shipaddress;
 	}
@@ -99,7 +107,8 @@ public class Shoppingcart implements java.io.Serializable {
 	public void setShipaddress(String shipaddress) {
 		this.shipaddress = shipaddress;
 	}
-	@Column(name = "ShipPhone")
+
+	@Column(name = "ShipPhone", length = 11)
 	public String getShipphone() {
 		return shipphone;
 	}
@@ -107,7 +116,8 @@ public class Shoppingcart implements java.io.Serializable {
 	public void setShipphone(String shipphone) {
 		this.shipphone = shipphone;
 	}
-	@Column(name = "ShipFullname")
+
+	@Column(name = "ShipFullname", length = 50)
 	public String getShipfullname() {
 		return shipfullname;
 	}
@@ -115,6 +125,7 @@ public class Shoppingcart implements java.io.Serializable {
 	public void setShipfullname(String shipfullname) {
 		this.shipfullname = shipfullname;
 	}
+
 	@Column(name = "ShipEmail")
 	public String getShipemail() {
 		return shipemail;

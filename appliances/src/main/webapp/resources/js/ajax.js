@@ -18,7 +18,7 @@ function callAjaxAddCart(id, number) {
 			$carNumber = data[1];
 			$(".totalPrice").text($totalPrice);
 			$("#cartNumber").text($carNumber);
-			makeToast('Ä�Ã£ thÃªm ' + number + ' sáº£n pháº©m vÃ o giá»� hÃ ng',
+			makeToast('Added ' + number + ' product(s) to cart',
 					'success', 'top-right');
 		}
 	});
@@ -52,7 +52,7 @@ function callAjaxEditCart(id) {
 			$(".totalPrice").text($totalPrice);
 			$("#cartNumber").text($carNumber);
 			$("#realprice_" + id).text(parseInt($price) * parseInt($number));
-			makeToast('Báº¡n Ä‘Ã£ cáº­p nháº­t giá»� hÃ ng', 'success', 'top-right');
+			makeToast('You have editted your cart', 'success', 'top-right');
 		},
 	});
 }
@@ -64,8 +64,8 @@ function callAjaxEditCart(id) {
  */
 function callAjaxDeleteCart(id) {
 	$.confirm({
-		'title' : 'ThÃ´ng bÃ¡o',
-		'message' : 'Báº¡n cÃ³ cháº¯c muá»‘n xÃ³a sáº£n pháº©m khá»�i giá»� hÃ ng?',
+		'title' : 'Warning',
+		'message' : 'Do you want do delete this product?',
 		'buttons' : {
 			'Yes' : {
 				'class' : 'blue',
@@ -80,7 +80,7 @@ function callAjaxDeleteCart(id) {
 							$(".totalPrice").text($totalPrice);
 							$("#cartNumber").text($carNumber);
 							$("#detail_" + id).remove();
-							makeToast('Ä�Ã£ xÃ³a sáº£n pháº©m khá»�i giá»� hÃ ng',
+							makeToast('Delete success',
 									'success', 'top-right');
 						}
 					});
@@ -97,17 +97,17 @@ function callAjaxDeleteCart(id) {
 	});
 
 }
-function callAjaxAddCompare(id) {
+function callAjaxAddCompare($id) {
 	$.ajax({
 		type : "POST",
 		url : "/appliances/compare/add",
-		date : "id=" + id,
+		data : 'id=' + $id,
 		success : function(response) {
-			if (response)
-				makeToast("Ä�Ã£ thÃªm vÃ o danh sÃ¡ch so sÃ¡nh", 'success',
-						'top-right');
+			if (response != null && response != "")
+				makeToast(response, 'error', 'top-right');
 			else
-				makeToast("Danh sÃ¡ch Ä‘áº§y", 'error', 'top-right');
+				makeToast("Add to compare list success", 'success',
+				'top-right');
 		}
 
 	});
@@ -170,7 +170,7 @@ function checkSubmitRegister() {
 }
 function checkUsername($username) {
 	if ($username == null || $username == "") {
-		makeToast("Báº¡n chÆ°a Ä‘iá»�n tÃªn Ä‘Äƒng nháº­p", "error", 'middle-center');
+		makeToast("username is required", "error", 'middle-center');
 		return false;
 	}
 	return true;
@@ -187,48 +187,48 @@ function callAjaxCheckUsername($username, callBack) {
 }
 function checkPassword($password, $confirmpassword) {
 	if ($password == null || $password == "") {
-		makeToast("Báº¡n chÆ°a Ä‘iá»�n máº­t kháº©u", "error", 'middle-center');
+		makeToast("password is required", "error", 'middle-center');
 		return false;
 	}
 	if ($confirmpassword == null || $confirmpassword == "") {
-		makeToast("Báº¡n chÆ°a xÃ¡c máº­t kháº©u", "error", 'middle-center');
+		makeToast("confirm password is required", "error", 'middle-center');
 		return false;
 	}
 	if ($password != $confirmpassword) {
-		makeToast("xÃ¡c nháº­n máº­t kháº©u khÃ´ng chÃ­nh xÃ¡c", "error", 'middle-center');
+		makeToast("confirm password is not correct", "error", 'middle-center');
 		return false;
 	}
 	return true;
 }
 function checkEmail($email) {
 	if ($email == null || $email == "") {
-		makeToast("Báº¡n chÆ°a nháº­p email", "error", 'middle-center');
+		makeToast("Email is required", "error", 'middle-center');
 		return false;
 	}
 	return true;
 }
 function checkFullname($fullname) {
 	if ($fullname == null || $fullname == "") {
-		makeToast("Báº¡n chÆ°a nháº­p há»� tÃªn", "error", 'middle-center');
+		makeToast("your name is is required", "error", 'middle-center');
 		return false;
 	}
 	return true;
 }
 function checkPhone($phone) {
 	if ($phone == null || $phone == "") {
-		makeToast("Báº¡n chÆ°a nháº­p sá»‘ Ä‘iá»‡n thoáº¡i", "error", 'middle-center');
+		makeToast("Phone number is required", "error", 'middle-center');
 		return false;
 	}
 	$Regx = /^[0-9]*$/;
 	if (!$Regx.test($phone)) {
-		makeToast("Sá»‘ Ä‘iá»‡n thoáº¡i khÃ´ng há»£p lá»‡", "error", 'middle-center');
+		makeToast("Number format is not correct", "error", 'middle-center');
 		return false;
 	}
 	return true;
 }
 function checkAddress($address) {
 	if ($address == null || $address == "") {
-		makeToast("Báº¡n chÆ°a Ä‘iá»�n Ä‘á»‹a chá»‰", "error", 'middle-center');
+		makeToast("Address is required", "error", 'middle-center');
 		return false;
 	}
 	return true;
@@ -252,8 +252,8 @@ function rate($id) {
 		success : function(data) {
 			$curRate = data[0];
 			$rateCount = data[1];
-			$("#rateValue").text($curRate + " / " + $rateCount + " Ä‘Ã¡nh giÃ¡");
-			makeToast("Ä�Ã¡nh giÃ¡ cá»§a báº¡n Ä‘Ã£ Ä‘Æ°á»£c ghi nháº­n", 'success',
+			$("#rateValue").text($curRate + " / " + $rateCount + " đánh giá");
+			makeToast("rate success", 'success',
 					'top-right');
 		}
 	});
@@ -262,19 +262,19 @@ function rate($id) {
  * Thanh toan
  */
 function checkOut() {
-	var shipfullname = $("input[name='shipfullname']").val();
-	var shipemail = $("input[name='shipemail']").val();
-	var shipadress = $("input[name='shipadress']").val();
-	var shipphone = $("input[name='shipphone']").val();
-	if (shipfullname == "" || shipemail == "" || shipadress == ""
-			|| shipphone == "")
-		makeToast("Vui lÃ²ng Ä‘iá»�n Ä‘á»§ thÃ´ng tin giao hÃ ng", 'warning',
+	$shipfullname = $("input[name='shipfullname']").val();
+	$shipemail = $("input[name='shipemail']").val();
+	$shipaddress = $("input[name='shipaddress']").val();
+	$shipphone = $("input[name='shipphone']").val();
+	if ($shipfullname == "" || $shipemail == "" || $shipaddress == ""
+			|| $shipphone == "")
+		makeToast("Please fill all information", 'warning',
 				'top-right');
 	else {
 		$.ajax({
 			type:'POST',
 			url:'/appliances/checkout/dochecout',
-			data:'shipfullname='+shipfullname+'&shipemail='+shipemail+'&shipaddress='+shipaddress+'&shipphone='+shipphone,
+			data:'shipfullname='+$shipfullname+'&shipemail='+$shipemail+'&shipaddress='+$shipaddress+'&shipphone='+$shipphone,
 			success:function(response)
 			{
 				if(response==null || response=="")
