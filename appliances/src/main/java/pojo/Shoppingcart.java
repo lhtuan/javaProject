@@ -37,6 +37,7 @@ public class Shoppingcart implements java.io.Serializable {
 	private String shipphone;
 	private String shipfullname;
 	private String shipemail;
+	private Boolean deleted;
 	public Shoppingcart() {
 	}
 
@@ -121,6 +122,14 @@ public class Shoppingcart implements java.io.Serializable {
 
 	public void setShipemail(String shipemail) {
 		this.shipemail = shipemail;
+	}
+	@Column(name = "Deleted")
+	public Boolean getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
 	}
 
 }

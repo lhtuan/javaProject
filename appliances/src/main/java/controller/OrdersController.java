@@ -49,76 +49,28 @@ public class OrdersController {
 	
 		return "vieworders";
 	}
-	@RequestMapping(value = { "/admin/completeaddorder" }, method = RequestMethod.GET)
-	public String SaveAddOrders(ModelMap model, HttpServletRequest request,
-			@RequestParam(value = "page", required = false) String page,
-			@RequestParam(value = "username", required = false) String username,
-			@RequestParam(value = "idproduct", required = false) String idproduct,
-			@RequestParam(value = "thoigian", required = false) String thoigian,
-			@RequestParam(value = "soluong", required = false) String soluong) throws ParseException {
-		 
-		
-		Account account = accountServive.get(username);
-		if(account == null){
-			model.addAttribute("addordererror", "Tai Khoan Khong Ton Tai");
-			return "addorders";
-		}
-		Product product = productService.get(Integer.parseInt(idproduct));
-		if(product == null){
-			model.addAttribute("addordererror", "San Pham Khong Ton Tai");
-			return "addorders";
-		}
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date dateorders = sdf.parse(thoigian);
-		
-		Shoppingcart shoppingcart = new Shoppingcart(account, dateorders);
-		String resultshoppingcart = shoppingcartService.add(shoppingcart);
-		if(resultshoppingcart != null){
-			model.addAttribute("addordererror", resultshoppingcart);
-			return "addorders";
-		}
-		Shoppingcartdetail shoppingcartdetail = new Shoppingcartdetail(product, shoppingcart, Integer.parseInt(soluong),false);
-		
-		String result = shoppingcartDetailService.add(shoppingcartdetail);
-		if(result != null){
-			model.addAttribute("addordererror", result);
-			return "addorders";
-		}
-		getOrders(model, page);
-		return "vieworders";
-	}
 	
 	
 	@RequestMapping(value = { "/admin/completeeditorder" }, method = RequestMethod.GET)
 	public String SaveEditOrder(ModelMap model	,HttpServletRequest request,
-			@RequestParam(value = "username", required = false) String username,
-			@RequestParam(value = "thoigian", required = false) String thoigian,
-			@RequestParam(value = "soluong", required = false) String soluong,
+			@RequestParam(value = "shippfullname", required = false) String shippfullname,
+			@RequestParam(value = "shippaddress", required = false) String shippaddress,
+			@RequestParam(value = "shippemail", required = false) String shippemail,
 			@RequestParam(value = "id", required = false) String id,
-			@RequestParam(value = "idproduct", required = false) String idproduct,
+			@RequestParam(value = "shipphone", required = false) String shipphone,
 			@RequestParam(value = "page", required = false) String page) throws ParseException {
 		
-		Account account = accountServive.get(username);
+		Shoppingcart shoppingcart = shoppingcartService.get(Integer.parseInt(id));
+		shoppingcart.setShipaddress(shippaddress);
+		shoppingcart.setShipemail(shippemail);
+		shoppingcart.setShipfullname(shippfullname);
+		shoppingcart.setShipphone(shipphone);
 		
-		Product product = productService.get(Integer.parseInt(idproduct));
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date dateorders = sdf.parse(thoigian);
-		
-		Shoppingcartdetail shoppingcartdetail = shoppingcartDetailService.get(Integer.parseInt(id));
-		shoppingcartdetail.setNumber(Integer.parseInt(soluong));
-		Shoppingcart shoppingcart = shoppingcartdetail.getShoppingcart();
-		shoppingcart.setOrderDate(dateorders);
 		
 		String resultShoppingcart = shoppingcartService.update(shoppingcart);
 		if(resultShoppingcart != null){
 			model.addAttribute("editordererror", resultShoppingcart);
-			return "editorders";
-		}
-		String result = shoppingcartDetailService.update(shoppingcartdetail);
-		if(result != null){
-			model.addAttribute("editordererror", result);
 			return "editorders";
 		}
 		
@@ -130,9 +82,10 @@ public class OrdersController {
 	public String DeleteOrder(ModelMap model	,HttpServletRequest request,
 			@RequestParam(value = "id", required = false) String id,
 			@RequestParam(value = "page", required = false) String page) {
-		Shoppingcartdetail shoppingcartdetail = shoppingcartDetailService.get(Integer.parseInt(id));
-		shoppingcartdetail.setDeleted(true);
-		String result = shoppingcartDetailService.update(shoppingcartdetail);
+		
+		Shoppingcart cart = shoppingcartService.get(Integer.parseInt(id));
+		cart.setDeleted(true);
+		String result =  shoppingcartService.update(cart);
 		if(result != null){
 			model.addAttribute("deletedordererror", result);
 			
@@ -141,27 +94,23 @@ public class OrdersController {
 		return "vieworders";
 	}
 	
-	@RequestMapping(value = { "/admin/addorders" }, method = RequestMethod.GET)
-	public String AddOrders(ModelMap model		) {
-		
-		return "addorders";
-	}
 	@RequestMapping(value = { "/admin/editorders" }, method = RequestMethod.GET)
 	public String EditOrder(ModelMap model,HttpServletRequest request,
 			@RequestParam(value = "id", required = false) String id	) {
 		
-		Shoppingcartdetail shoppingcartdetail = shoppingcartDetailService.get(Integer.parseInt(id));
-		Order order = new Order();
-		order.setSanpham(shoppingcartdetail.getProduct().getProductName());
-		order.setSoluong(shoppingcartdetail.getNumber());
-		order.setThoigian(shoppingcartdetail.getShoppingcart().getOrderDate());
-		order.setUsername(shoppingcartdetail.getShoppingcart().getAccount()
-				.getUsername());
-		order.setIdProduct(shoppingcartdetail.getProduct().getId());
-		order.setId(shoppingcartdetail.getId());
+		Shoppingcart shoppingcart = shoppingcartService.get(Integer.parseInt(id));
+		model.addAttribute("order", shoppingcart);
 		
-		model.addAttribute("order", order);
 		return "editorders";
+	}
+	@RequestMapping(value = { "/admin/detailorder" }, method = RequestMethod.GET)
+	public String DetailOrder(ModelMap model,HttpServletRequest request,
+			@RequestParam(value = "id", required = false) String id	) {
+		
+		Shoppingcart shoppingcart = shoppingcartService.get(Integer.parseInt(id));
+		model.addAttribute("order", shoppingcart);
+		
+		return "orderdetail";
 	}
 	public void getOrders(ModelMap model, String page) {
 		String ipage = "";
@@ -171,28 +120,14 @@ public class OrdersController {
 
 		int intpage = Integer.parseInt(page);
 		
-		List<Shoppingcartdetail> shoppingcartDetails = shoppingcartDetailService
-				.shoppingcartdetails(intpage);
-		int shoppingcartdetailCount = shoppingcartDetailService
-				.Countshoppingcartdetail();
+		List<Shoppingcart> shoppingcarts = shoppingcartService.getShoppingCarts(intpage);
+		int shoppingcartCount = shoppingcartService.CountShoppingCart();
 
-		List<Order> orders = new ArrayList<Order>();
-		for (Shoppingcartdetail spcarddetail : shoppingcartDetails) {
-			Order temp = new Order();
-			temp.setSanpham(spcarddetail.getProduct().getProductName());
-			temp.setSoluong(spcarddetail.getNumber());
-			temp.setThoigian(spcarddetail.getShoppingcart().getOrderDate());
-			temp.setUsername(spcarddetail.getShoppingcart().getAccount()
-					.getUsername());
-			temp.setId(spcarddetail.getId());
-			orders.add(temp);
-		}
-
-		int totalPage = (shoppingcartdetailCount / numberPromotionofPage)
-				+ ((shoppingcartdetailCount % numberPromotionofPage) > 0 ? 1
+		int totalPage = (shoppingcartCount / numberPromotionofPage)
+				+ ((shoppingcartCount % numberPromotionofPage) > 0 ? 1
 						: 0);
 		model.addAttribute("totalPage", totalPage);
-		model.addAttribute("orders", orders);
+		model.addAttribute("orders", shoppingcarts);
 		model.addAttribute("ipage", ipage);
 	}
 }

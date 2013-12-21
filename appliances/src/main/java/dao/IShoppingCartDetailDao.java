@@ -11,4 +11,5 @@ public interface IShoppingCartDetailDao {
 	public boolean isExist(int id);
 	public List<Shoppingcartdetail> Shoppingcartdetails (int page);
 	public int CountShoppingcartdetail();
+	public Shoppingcartdetail getbyCart(int idCart);
 }

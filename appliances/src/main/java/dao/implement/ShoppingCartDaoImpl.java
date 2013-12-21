@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pojo.Account;
 import pojo.Shoppingcart;
+import pojo.Shoppingcartdetail;
 import dao.IShoppingCartDao;
 import dao.base.BaseDao;
 @Repository
@@ -65,6 +66,37 @@ public class ShoppingCartDaoImpl extends BaseDao implements IShoppingCartDao {
 	@Transactional
 	public boolean isExist(int id) {
 		return get(id) == null ? false : true;
+	}
+	@Transactional
+	public List<Shoppingcart> getShoppingcart(int page) {
+		List<Shoppingcart> shoppingCarts = null;
+		 int numberPromotionOfPage = 10;
+		try {
+			Query query = session().createQuery(
+					"from Shoppingcart  c where c.deleted = false"
+							);
+			query.setFirstResult(numberPromotionOfPage * (page - 1));
+			query.setMaxResults(numberPromotionOfPage);
+			shoppingCarts = query.list();
+			LoggHelper.info("Get shopping carts success");
+		} catch (Exception ex) {
+			LoggHelper.waring("Error when get shopping carts");
+		}
+		return shoppingCarts;
+	}
+	@Transactional
+	public int CountShoppingCart() {
+		// TODO Auto-generated method stub
+		int count = 0;
+		Query query = session().createQuery("select count(*) from Shoppingcart    c where c.deleted = false ");
+		List<Shoppingcartdetail> Shoppingcartdetails = null;
+		try {
+			count = Integer.parseInt(query.list().get(0).toString());
+			LoggHelper.info("count Shoppingcart success");
+		} catch (Exception ex) {
+			LoggHelper.waring("Error when count Shoppingcart: " + ex.getMessage());
+		}
+		return count;
 	}
 
 }

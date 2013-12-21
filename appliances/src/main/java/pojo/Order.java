@@ -3,49 +3,31 @@ package pojo;
 import java.util.Date;
 
 public class Order {
-	private int id;
-	private String username;
-	private String sanpham;
-	private Date thoigian;
-	private int soluong;
-	private int idProduct;
-	public String getUsername() {
-		return username;
+
+	private int idShoppingcart;
+	private int idShoppingcartdetail;
+	private int number;
+	public int getIdShoppingcart() {
+		return idShoppingcart;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setIdShoppingcart(int idShoppingcart) {
+		this.idShoppingcart = idShoppingcart;
 	}
-	public String getSanpham() {
-		return sanpham;
+	public int getIdShoppingcartdetail() {
+		return idShoppingcartdetail;
 	}
-	public void setSanpham(String sanpham) {
-		this.sanpham = sanpham;
+	public void setIdShoppingcartdetail(int idShoppingcartdetail) {
+		this.idShoppingcartdetail = idShoppingcartdetail;
 	}
-	public Date getThoigian() {
-		return thoigian;
+	public int getNumber() {
+		return number;
 	}
-	public void setThoigian(Date thoigian) {
-		this.thoigian = thoigian;
+	public void setNumber(int number) {
+		this.number = number;
 	}
-	public int getSoluong() {
-		return soluong;
-	}
-	public void setSoluong(int soluong) {
-		this.soluong = soluong;
-	}
-	public void Order(){
+	public   Order()
+	{
 		
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public int getIdProduct() {
-		return idProduct;
-	}
-	public void setIdProduct(int idProduct) {
-		this.idProduct = idProduct;
-	}
+
 }

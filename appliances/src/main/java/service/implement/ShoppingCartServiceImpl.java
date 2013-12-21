@@ -21,7 +21,7 @@ public class ShoppingCartServiceImpl implements IShoppingCartService {
 		if (shoppingCartDao.saveOrUpdate(shoppingCart))
 			return null;
 		else
-			return "Lỗi chưa xác định";
+			return "Lá»—i chÆ°a xÃ¡c Ä‘á»‹nh";
 	}
 
 	/***
@@ -29,12 +29,12 @@ public class ShoppingCartServiceImpl implements IShoppingCartService {
 	 */
 	public String update(Shoppingcart shoppingCart) {
 		if (!shoppingCartDao.isExist(shoppingCart.getId())) {
-			return "Giỏ hàng không tồn tại";
+			return "Giá»� hÃ ng khÃ´ng tá»“n táº¡i";
 		} else {
 			if (shoppingCartDao.saveOrUpdate(shoppingCart))
 				return null;
 			else
-				return "Lỗi chưa xác định";
+				return "Lá»—i chÆ°a xÃ¡c Ä‘á»‹nh";
 		}
 	}
 
@@ -46,6 +46,21 @@ public class ShoppingCartServiceImpl implements IShoppingCartService {
 	public List<Shoppingcart> getByAccount(String username) {
 		// TODO Auto-generated method stub
 		return shoppingCartDao.getByAccount(username);
+	}
+
+	public List<Shoppingcart> getShoppingCarts(int page) {
+		// TODO Auto-generated method stub
+		return shoppingCartDao.getShoppingcart(page);
+	}
+
+	public int CountShoppingCart() {
+		// TODO Auto-generated method stub
+		return shoppingCartDao.CountShoppingCart();
+	}
+
+	public Shoppingcart get(int id) {
+		// TODO Auto-generated method stub
+		return shoppingCartDao.get(id);
 	}
 
 }

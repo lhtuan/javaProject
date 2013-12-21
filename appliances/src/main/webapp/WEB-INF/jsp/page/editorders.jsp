@@ -21,8 +21,7 @@
 						</ul>
 						<h3>Đơn Đặt Hàng</h3>
 						<ul class="toggle">
-							<li class="icn_new_article"><a
-								href="/appliances/admin/addorders">New</a></li>
+
 							<li class="icn_categories"><a
 								href="/appliances/admin/vieworders">View</a></li>
 						</ul>
@@ -59,23 +58,22 @@
 
 				<div id="adm_right">
 					<header>
-						<h3 class="tabs_involved">Thêm Đơn Hàng</h3>
+						<h3 class="tabs_involved">Cập Nhật Đơn Hàng</h3>
 					</header>
 						<c:if test="${editordererror != null }">
 						<h1 style="color: red;">${editordererror}</h1>
 					</c:if>
 					<form action="/appliances/admin/completeeditorder" method="get">
 						<fieldset>
-							<label>Người Đặt</label>
-							 <input type="text" name = "username" value = "${order.username}" readonly="readonly"> 
-							 <label>Sản Phẩm</label>
-							  <input type="text" name = "" value = "${order.sanpham}" readonly="readonly">
-							   <label>Thời Gian</label> 
-							   <input	type="text" name = "thoigian" value = "${order.thoigian}"> 
-							   <label>Số Lượng</label>
-							    <input type="text" name = "soluong" value = "${order.soluong}">
-							    <input type="hidden" name = "id" value = "${order.id}">
-							    <input type="hidden" name = "idproduct" value = "${order.id}">
+							<label>Người Nhận</label>
+							 <input type="text" name = "shippfullname" value = "${order.shipfullname}" >
+							 <label>Địa Chỉ</label>
+							 <input type="text" name = "shippaddress" value = "${order.shipaddress}" >
+							  <label>Email</label>
+							 <input type="text" name = "shippemail" value = "${order.shipemail}" >
+							  <label>SDT</label>
+							 <input type="text" name = "shipphone" value = "${order.shipphone}" > 
+							  <input type="hidden" name = "id" value = "${order.id}">
 						</fieldset>
 						<input type="submit" value="Cập Nhật">
 					</form>

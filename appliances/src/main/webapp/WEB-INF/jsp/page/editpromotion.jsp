@@ -20,7 +20,7 @@
 				</ul>
 				<h3>Đơn Đặt Hàng</h3>
 				<ul class="toggle">
-					<li class="icn_new_article"><a href="/appliances/admin/addorders">New</a></li>
+	
 					<li class="icn_categories"><a href="/appliances/admin/vieworders">View</a></li>
 				</ul>
 				<h3>Sản phẩm</h3>

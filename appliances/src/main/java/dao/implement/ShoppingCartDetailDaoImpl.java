@@ -88,4 +88,18 @@ public class ShoppingCartDetailDaoImpl extends BaseDao implements
 		return count;
 	}
 
+	public Shoppingcartdetail getbyCart(int idCart) {
+		// TODO Auto-generated method stub
+//		List<Shoppingcartdetail> shoppingCartDetail = null;
+//		try {
+//			Query query = session().createQuery("from Shoppingcartdetail c where c.shoppingcart = "+idCart+"");)
+//			shoppingCartDetail = query.list();
+//			LoggHelper.info("Get shopping cart detail success");
+//		} catch (Exception ex) {
+//			LoggHelper.waring("Error when get shopping cart detail");
+//		}
+//		return shoppingCartDetail;
+		return null;
+	}
+
 }
