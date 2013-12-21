@@ -97,17 +97,17 @@ function callAjaxDeleteCart(id) {
 	});
 
 }
-function callAjaxAddCompare(id) {
+function callAjaxAddCompare($id) {
 	$.ajax({
 		type : "POST",
 		url : "/appliances/compare/add",
-		date : "id=" + id,
+		data : 'id=' + $id,
 		success : function(response) {
-			if (response)
-				makeToast("Ä�Ã£ thÃªm vÃ o danh sÃ¡ch so sÃ¡nh", 'success',
-						'top-right');
+			if (response != null && response != "")
+				makeToast(response, 'error', 'top-right');
 			else
-				makeToast("Danh sÃ¡ch Ä‘áº§y", 'error', 'top-right');
+				makeToast("Đã thêm vào danh sách so sánh", 'success',
+				'top-right');
 		}
 
 	});

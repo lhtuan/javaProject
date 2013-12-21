@@ -41,7 +41,7 @@ public class CompareController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = { "/compare/add" }, method = RequestMethod.POST)
 	public @ResponseBody
-	boolean addToCompareByAjax(HttpServletRequest request,
+	String addToCompareByAjax(HttpServletRequest request,
 			@RequestParam("id") int id) {
 		ProductServiceImpl productService = (ProductServiceImpl) BeanFactory
 				.getBean("productService");
@@ -50,15 +50,25 @@ public class CompareController {
 		HttpSession session = request.getSession();
 		List<Product> products = null;
 		products = (List<Product>) session.getAttribute("products");
-		if (products != null) {
-			PropertiesHelper properties = new PropertiesHelper("const");
-			int maxSize = Integer.parseInt(properties.getValue("max_compare"));
-			if (products.size() == maxSize)
-				return false;
+		if (products == null) {
+			products = new ArrayList<Product>();
 		}
-		products.add(product);
-		session.setAttribute("products", products);
-		return true;
+		PropertiesHelper properties = new PropertiesHelper("const");
+		int maxSize = Integer.parseInt(properties.getValue("max_compare"));
+		if(products.size() == maxSize)
+			return "Compare list is full";
+		if (products.size() < maxSize) {
+			for (Product p : products) {
+				if (p.getId() == id) {
+					return "Product is exist";// san pham da co trong compare list, khong
+										// add
+				}
+			}
+			products.add(product);
+			session.setAttribute("products", products);
+		}
+		
+		return null;
 	}
 
 	/***
@@ -70,7 +80,7 @@ public class CompareController {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = { "/compare/add" }, method = RequestMethod.GET)
-	public String addToCompare(ModelMap model,HttpServletRequest request,
+	public String addToCompare(ModelMap model, HttpServletRequest request,
 			@RequestParam("id") int id) {
 		ProductServiceImpl productService = (ProductServiceImpl) BeanFactory
 				.getBean("productService");
@@ -86,10 +96,10 @@ public class CompareController {
 		int maxSize = Integer.parseInt(properties.getValue("max_compare"));
 		if (products.size() < maxSize) {
 			for (Product p : products) {
-				if(p.getId() == id)
-				{
+				if (p.getId() == id) {
 					model.addAttribute("products", products);
-					return "compare";//san pham da co trong compare list, khong add
+					return "compare";// san pham da co trong compare list, khong
+										// add
 				}
 			}
 			products.add(product);
@@ -101,7 +111,7 @@ public class CompareController {
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = { "compare/delete" }, method = RequestMethod.GET)
-	public String deleteFromCompare(ModelMap model,HttpServletRequest request,
+	public String deleteFromCompare(ModelMap model, HttpServletRequest request,
 			@RequestParam("id") int id) {
 		HttpSession session = request.getSession();
 		List<Product> products = null;
