@@ -18,7 +18,7 @@ function callAjaxAddCart(id, number) {
 			$carNumber = data[1];
 			$(".totalPrice").text($totalPrice);
 			$("#cartNumber").text($carNumber);
-			makeToast('Đã thêm ' + number + ' sản phẩm vào giỏ hàng',
+			makeToast('Ä�Ã£ thÃªm ' + number + ' sáº£n pháº©m vÃ o giá»� hÃ ng',
 					'success', 'top-right');
 		}
 	});
@@ -52,7 +52,7 @@ function callAjaxEditCart(id) {
 			$(".totalPrice").text($totalPrice);
 			$("#cartNumber").text($carNumber);
 			$("#realprice_" + id).text(parseInt($price) * parseInt($number));
-			makeToast('Bạn đã cập nhật giỏ hàng', 'success', 'top-right');
+			makeToast('Báº¡n Ä‘Ã£ cáº­p nháº­t giá»� hÃ ng', 'success', 'top-right');
 		},
 	});
 }
@@ -64,8 +64,8 @@ function callAjaxEditCart(id) {
  */
 function callAjaxDeleteCart(id) {
 	$.confirm({
-		'title' : 'Thông báo',
-		'message' : 'Bạn có chắc muốn xóa sản phẩm khỏi giỏ hàng?',
+		'title' : 'ThÃ´ng bÃ¡o',
+		'message' : 'Báº¡n cÃ³ cháº¯c muá»‘n xÃ³a sáº£n pháº©m khá»�i giá»� hÃ ng?',
 		'buttons' : {
 			'Yes' : {
 				'class' : 'blue',
@@ -80,7 +80,7 @@ function callAjaxDeleteCart(id) {
 							$(".totalPrice").text($totalPrice);
 							$("#cartNumber").text($carNumber);
 							$("#detail_" + id).remove();
-							makeToast('Đã xóa sản phẩm khỏi giỏ hàng',
+							makeToast('Ä�Ã£ xÃ³a sáº£n pháº©m khá»�i giá»� hÃ ng',
 									'success', 'top-right');
 						}
 					});
@@ -104,10 +104,10 @@ function callAjaxAddCompare(id) {
 		date : "id=" + id,
 		success : function(response) {
 			if (response)
-				makeToast("Đã thêm vào danh sách so sánh", 'success',
+				makeToast("Ä�Ã£ thÃªm vÃ o danh sÃ¡ch so sÃ¡nh", 'success',
 						'top-right');
 			else
-				makeToast("Danh sách đầy", 'error', 'top-right');
+				makeToast("Danh sÃ¡ch Ä‘áº§y", 'error', 'top-right');
 		}
 
 	});
@@ -170,7 +170,7 @@ function checkSubmitRegister() {
 }
 function checkUsername($username) {
 	if ($username == null || $username == "") {
-		makeToast("Bạn chưa điền tên đăng nhập", "error", 'middle-center');
+		makeToast("Báº¡n chÆ°a Ä‘iá»�n tÃªn Ä‘Äƒng nháº­p", "error", 'middle-center');
 		return false;
 	}
 	return true;
@@ -187,48 +187,48 @@ function callAjaxCheckUsername($username, callBack) {
 }
 function checkPassword($password, $confirmpassword) {
 	if ($password == null || $password == "") {
-		makeToast("Bạn chưa điền mật khẩu", "error", 'middle-center');
+		makeToast("Báº¡n chÆ°a Ä‘iá»�n máº­t kháº©u", "error", 'middle-center');
 		return false;
 	}
 	if ($confirmpassword == null || $confirmpassword == "") {
-		makeToast("Bạn chưa xác mật khẩu", "error", 'middle-center');
+		makeToast("Báº¡n chÆ°a xÃ¡c máº­t kháº©u", "error", 'middle-center');
 		return false;
 	}
 	if ($password != $confirmpassword) {
-		makeToast("xác nhận mật khẩu không chính xác", "error", 'middle-center');
+		makeToast("xÃ¡c nháº­n máº­t kháº©u khÃ´ng chÃ­nh xÃ¡c", "error", 'middle-center');
 		return false;
 	}
 	return true;
 }
 function checkEmail($email) {
 	if ($email == null || $email == "") {
-		makeToast("Bạn chưa nhập email", "error", 'middle-center');
+		makeToast("Báº¡n chÆ°a nháº­p email", "error", 'middle-center');
 		return false;
 	}
 	return true;
 }
 function checkFullname($fullname) {
 	if ($fullname == null || $fullname == "") {
-		makeToast("Bạn chưa nhập họ tên", "error", 'middle-center');
+		makeToast("Báº¡n chÆ°a nháº­p há»� tÃªn", "error", 'middle-center');
 		return false;
 	}
 	return true;
 }
 function checkPhone($phone) {
 	if ($phone == null || $phone == "") {
-		makeToast("Bạn chưa nhập số điện thoại", "error", 'middle-center');
+		makeToast("Báº¡n chÆ°a nháº­p sá»‘ Ä‘iá»‡n thoáº¡i", "error", 'middle-center');
 		return false;
 	}
 	$Regx = /^[0-9]*$/;
 	if (!$Regx.test($phone)) {
-		makeToast("Số điện thoại không hợp lệ", "error", 'middle-center');
+		makeToast("Sá»‘ Ä‘iá»‡n thoáº¡i khÃ´ng há»£p lá»‡", "error", 'middle-center');
 		return false;
 	}
 	return true;
 }
 function checkAddress($address) {
 	if ($address == null || $address == "") {
-		makeToast("Bạn chưa điền địa chỉ", "error", 'middle-center');
+		makeToast("Báº¡n chÆ°a Ä‘iá»�n Ä‘á»‹a chá»‰", "error", 'middle-center');
 		return false;
 	}
 	return true;
@@ -252,8 +252,8 @@ function rate($id) {
 		success : function(data) {
 			$curRate = data[0];
 			$rateCount = data[1];
-			$("#rateValue").text($curRate + " / " + $rateCount + " đánh giá");
-			makeToast("Đánh giá của bạn đã được ghi nhận", 'success',
+			$("#rateValue").text($curRate + " / " + $rateCount + " Ä‘Ã¡nh giÃ¡");
+			makeToast("Ä�Ã¡nh giÃ¡ cá»§a báº¡n Ä‘Ã£ Ä‘Æ°á»£c ghi nháº­n", 'success',
 					'top-right');
 		}
 	});
@@ -268,12 +268,13 @@ function checkOut() {
 	var shipphone = $("input[name='shipphone']").val();
 	if (shipfullname == "" || shipemail == "" || shipadress == ""
 			|| shipphone == "")
-		makeToast("Vui lòng điền đủ thông tin giao hàng", 'warning',
+		makeToast("Vui lÃ²ng Ä‘iá»�n Ä‘á»§ thÃ´ng tin giao hÃ ng", 'warning',
 				'top-right');
 	else {
 		$.ajax({
 			type:'POST',
 			url:'/appliances/checkout/dochecout',
+			data:'shipfullname='+shipfullname+'&shipemail='+shipemail+'&shipaddress='+shipaddress+'&shipphone='+shipphone,
 			success:function(response)
 			{
 				if(response==null || response=="")

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import pojo.Account;
@@ -49,12 +50,16 @@ public class CheckOutController {
 	 * @return null: thanh cong , String: ten loi
 	 */
 	@RequestMapping(value={"/checkout/dochecout"},method=RequestMethod.POST)
-	public @ResponseBody String doCheckout(HttpServletRequest request)
+	public @ResponseBody String doCheckout(HttpServletRequest request,
+			@RequestParam("shipfullname")String shipfullname,
+			@RequestParam("shipaddress")String shipaddress,
+			@RequestParam("shipemail")String shipemail,
+			@RequestParam("shipphone")String shipphone)
 	{
 		HttpSession session = request.getSession();
 		Shoppingcart cart = (Shoppingcart)session.getAttribute("cart");
 		if(cart==null)
-			return "Giỏ hàng rỗng";
+			return "Giá»� hÃ ng rá»—ng";
 		try
 		{
 			if(cart.getAccount()== null)
@@ -63,6 +68,10 @@ public class CheckOutController {
 				String username = (String)session.getAttribute("username");
 				Account account = accountService.get(username);
 				cart.setAccount(account);
+				cart.setShipaddress(shipaddress);
+				cart.setShipemail(shipemail);
+				cart.setShipfullname(shipfullname);
+				cart.setShipphone(shipphone);
 			}
 			cart.setOrderDate(new Date());
 			ShoppingCartServiceImpl cartService = (ShoppingCartServiceImpl)BeanFactory.getBean("shoppingCartService");
@@ -77,7 +86,7 @@ public class CheckOutController {
 		}
 		catch(Exception ex)
 		{
-			return "Lỗi: "+ex.getMessage();
+			return "Lá»—i: "+ex.getMessage();
 		}
 		return null;
 	}

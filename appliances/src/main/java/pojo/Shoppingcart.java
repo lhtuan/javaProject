@@ -33,7 +33,10 @@ public class Shoppingcart implements java.io.Serializable {
 	private Account account;
 	private Date orderDate;
 	private Set<Shoppingcartdetail> shoppingcartdetails = new HashSet<Shoppingcartdetail>(0);
-
+	private String shipaddress;
+	private String shipphone;
+	private String shipfullname;
+	private String shipemail;
 	public Shoppingcart() {
 	}
 
@@ -86,6 +89,38 @@ public class Shoppingcart implements java.io.Serializable {
 
 	public void setShoppingcartdetails(Set<Shoppingcartdetail> shoppingcartdetails) {
 		this.shoppingcartdetails = shoppingcartdetails;
+	}
+	@Column(name = "ShipAddress")
+	public String getShipaddress() {
+		return shipaddress;
+	}
+
+	public void setShipaddress(String shipaddress) {
+		this.shipaddress = shipaddress;
+	}
+	@Column(name = "ShipPhone")
+	public String getShipphone() {
+		return shipphone;
+	}
+
+	public void setShipphone(String shipphone) {
+		this.shipphone = shipphone;
+	}
+	@Column(name = "ShipFullname")
+	public String getShipfullname() {
+		return shipfullname;
+	}
+
+	public void setShipfullname(String shipfullname) {
+		this.shipfullname = shipfullname;
+	}
+	@Column(name = "ShipEmail")
+	public String getShipemail() {
+		return shipemail;
+	}
+
+	public void setShipemail(String shipemail) {
+		this.shipemail = shipemail;
 	}
 
 }
