@@ -37,8 +37,8 @@
 						<tr class="even">
 						  <td>Đánh giá</td>
 						   <c:forEach var="product" items="${products}">
-						    <td><img alt="Based on 0 reviews." src="image/stars-2.png"/><br/>
-							Chưa có</td>
+						    <td>
+							${product.rate}</td>
 						   </c:forEach>
 						</tr>
 						<tr >

@@ -38,11 +38,9 @@ public class Shoppingcart implements java.io.Serializable {
 	private String shipphone;
 	private String shipfullname;
 	private String shipemail;
-<<<<<<< HEAD
-	private Boolean deleted;
-=======
 
->>>>>>> 6b8d7102543985194e2d254ecf9300de9dc2c69c
+	private Boolean deleted;
+
 	public Shoppingcart() {
 	}
 
@@ -69,7 +67,7 @@ public class Shoppingcart implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "Username", nullable = false)
 	public Account getAccount() {
 		return this.account;

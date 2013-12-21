@@ -10,8 +10,8 @@
 					<li><a href="#"> <span class="ir icon my-account"></span>
 							<span>${username}</span>
 					</a></li>
-					<li><a href="/appliances/checkout"> <span
-							class="ir icon checkout"></span> <span>Thanh toán</span>
+					<li><a href="/appliances/history"> <span
+							class="ir icon checkout"></span> <span>Lịch sử mua hàng</span>
 					</a></li>
 					<c:set var="admin" value="admin"/>
 					<c:if test="${username == admin}">

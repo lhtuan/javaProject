@@ -2,9 +2,9 @@ package service.implement;
 
 import java.util.List;
 
-import dao.implement.ShoppingCartDaoImpl;
 import pojo.Shoppingcart;
 import service.IShoppingCartService;
+import dao.implement.ShoppingCartDaoImpl;
 
 public class ShoppingCartServiceImpl implements IShoppingCartService {
 	private ShoppingCartDaoImpl shoppingCartDao;
@@ -43,9 +43,9 @@ public class ShoppingCartServiceImpl implements IShoppingCartService {
 		return shoppingCartDao.getAll();
 	}
 
-	public List<Shoppingcart> getByAccount(String username) {
+	public List<Shoppingcart> getByAccount(String username,int page) {
 		// TODO Auto-generated method stub
-		return shoppingCartDao.getByAccount(username);
+		return shoppingCartDao.getByAccount(username,page);
 	}
 
 	public List<Shoppingcart> getShoppingCarts(int page) {
@@ -61,6 +61,11 @@ public class ShoppingCartServiceImpl implements IShoppingCartService {
 	public Shoppingcart get(int id) {
 		// TODO Auto-generated method stub
 		return shoppingCartDao.get(id);
+	}
+
+	public int CountByAccount(String username) {
+		// TODO Auto-generated method stub
+		return shoppingCartDao.CountByAccount(username);
 	}
 
 }

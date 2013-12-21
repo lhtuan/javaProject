@@ -50,12 +50,15 @@ public class ShoppingCartDaoImpl extends BaseDao implements IShoppingCartDao {
 		return shoppingCarts;
 	}
 	@Transactional
-	public List<Shoppingcart> getByAccount(String username) {
+	public List<Shoppingcart> getByAccount(String username,int page) {
 		List<Shoppingcart> shoppingCarts = null;
+		 int numberPromotionOfPage = 3;
 		try {
 			Query query = session().createQuery(
-					"from Shoppingcart cart where cart.Username = '" + username
+					"from Shoppingcart cart where cart.account.username = '" + username
 							+ "'");
+			query.setFirstResult(numberPromotionOfPage * (page - 1));
+			query.setMaxResults(numberPromotionOfPage);
 			shoppingCarts = query.list();
 			LoggHelper.info("Get shopping carts success");
 		} catch (Exception ex) {
@@ -98,5 +101,21 @@ public class ShoppingCartDaoImpl extends BaseDao implements IShoppingCartDao {
 		}
 		return count;
 	}
+	@Transactional
+	public int CountByAccount(String username) {
+		// TODO Auto-generated method stub
+		int count = 0;
+		Query query = session().createQuery("select count(*) from Shoppingcart  cart where cart.account.username = '" + username
+							+ "'");
+		List<Shoppingcartdetail> Shoppingcartdetails = null;
+		try {
+			count = Integer.parseInt(query.list().get(0).toString());
+			LoggHelper.info("count Shoppingcart success");
+		} catch (Exception ex) {
+			LoggHelper.waring("Error when count Shoppingcart: " + ex.getMessage());
+		}
+		return count;
+	}
+	
 
 }

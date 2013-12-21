@@ -7,6 +7,7 @@
 
 	<security:http auto-config="true">
 		<security:intercept-url pattern="/checkout" access="ROLE_USER" />
+		<security:intercept-url pattern="/history" access="ROLE_USER" />
 		<security:intercept-url pattern="/admin**" access="ROLE_ADMIN" />
 		<security:form-login login-page='/login'
 			authentication-failure-url="/loginfailed" />
