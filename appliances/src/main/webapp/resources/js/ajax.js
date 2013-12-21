@@ -262,19 +262,19 @@ function rate($id) {
  * Thanh toan
  */
 function checkOut() {
-	var shipfullname = $("input[name='shipfullname']").val();
-	var shipemail = $("input[name='shipemail']").val();
-	var shipadress = $("input[name='shipadress']").val();
-	var shipphone = $("input[name='shipphone']").val();
-	if (shipfullname == "" || shipemail == "" || shipadress == ""
-			|| shipphone == "")
+	$shipfullname = $("input[name='shipfullname']").val();
+	$shipemail = $("input[name='shipemail']").val();
+	$shipaddress = $("input[name='shipaddress']").val();
+	$shipphone = $("input[name='shipphone']").val();
+	if ($shipfullname == "" || $shipemail == "" || $shipaddress == ""
+			|| $shipphone == "")
 		makeToast("Vui lÃ²ng Ä‘iá»�n Ä‘á»§ thÃ´ng tin giao hÃ ng", 'warning',
 				'top-right');
 	else {
 		$.ajax({
 			type:'POST',
 			url:'/appliances/checkout/dochecout',
-			data:'shipfullname='+shipfullname+'&shipemail='+shipemail+'&shipaddress='+shipaddress+'&shipphone='+shipphone,
+			data:'shipfullname='+$shipfullname+'&shipemail='+$shipemail+'&shipaddress='+$shipaddress+'&shipphone='+$shipphone,
 			success:function(response)
 			{
 				if(response==null || response=="")

@@ -56,7 +56,7 @@
                           </li>
 						   <li>
                             <label>Địa chỉ nhận hàng
-                              <input type="text" name="shipadress" placeholder="Địa chỉ..."/>
+                              <input type="text" name="shipaddress" placeholder="Địa chỉ..."/>
                             </label>
                           </li>
 						   <li>
