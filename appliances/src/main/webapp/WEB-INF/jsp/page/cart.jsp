@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <div role="main" class="container cart">
 
@@ -52,7 +53,7 @@
 					<div class="half-col">Tổng cộng</div>
 					<div class="half-col value-wrapper">
 
-						<span class="currency">$</span><span class="totalPrice">${total}</span>
+						<span class="totalPrice"><fmt:formatNumber value="${total}"  pattern="###,###,###.#" /></span>
 
 					</div>
 				</div>
@@ -63,7 +64,7 @@
 
 	<div class="row-fluid checkout">
 		<div class="span4">
-			<a href="#" class="btn"><span class="gradient">Checkout</span></a>
+			<a href="/appliances/checkout" class="btn"><span class="gradient">Thanh toán</span></a>
 		</div>
 	</div>
 

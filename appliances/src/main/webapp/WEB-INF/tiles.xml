@@ -77,6 +77,10 @@
 		<put-attribute name="title" value=" Thanh Toán" />
 		<put-attribute name="content" value="/WEB-INF/jsp/page/checkout.jsp" />
 	</definition>
+	<definition name="checkoutsuccess" extends="page">
+		<put-attribute name="title" value=" Thanh Toán" />
+		<put-attribute name="content" value="/WEB-INF/jsp/page/checkoutsuccess.jsp" />
+	</definition>
 	<definition name="vieworders" extends="page">
 		<put-attribute name="title" value="Quản lý hóa đơn" />
 		<put-attribute name="content" value="/WEB-INF/jsp/page/vieworders.jsp" />

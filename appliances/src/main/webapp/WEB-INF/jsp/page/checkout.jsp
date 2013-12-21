@@ -3,6 +3,7 @@
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
       <div role="main" class="container checkout">
         <div class="row">
@@ -86,7 +87,7 @@
 								<th class="alpha16">
 								  Số lượng
 								</th>
-								<th class="alpha16">
+								<th class="span2" style="margin-left: 0px;">
 								  giá
 								</th>
 							  </tr>
@@ -124,7 +125,7 @@
 									</div>
 									<div class=" value-wrapper">
 									  
-									<span class="value"><fmt:formatNumber value="${totalPrice}"  pattern="###,###,###.# đ" /></span>
+									<span class="value" id="totalPrice"><fmt:formatNumber value="${totalPrice}"  pattern="###,###,###.#" /></span>
 									  
 									</div>
 								  </div>
@@ -134,7 +135,7 @@
 							</table>
 							<div class="row-fluid checkout">
 							  <div class="span4">
-								<a href="#" class="btn"><span class="gradient">Place Order</span></a>
+								<a href="javaScript: checkOut()" class="btn"><span class="gradient">Hoàn tất</span></a>
 							  </div>
 							</div>
                         </ul>
@@ -146,3 +147,4 @@
         
         </div>
       </div>    
+      

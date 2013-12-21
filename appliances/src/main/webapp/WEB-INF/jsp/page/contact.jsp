@@ -6,27 +6,31 @@
         <div class="row">
         
           <div class="span5">
-            <h1>Contact with us</h1>
+            <h1>Liên hệ với chúng tôi</h1>
             
-            <form action="http://teothemes.com/html/MenStyle/process.php" method="post" class="clearfix">
-              <label>
-                <input class="text-input" type="text" name="name" placeholder="Your Name..."/>
+            <form action="" method="post" class="clearfix">
+              <label style="padding-left: 0px;">
+                <input class="text-input" type="text" name="name" placeholder="Họ tên..."/>
               </label>
-              <label>
-                <input class="text-input" type="text" name="email" placeholder="Your Email..."/>
+              <label style="padding-left: 0px;">
+                <input class="text-input" type="text" name="email" placeholder="Email..."/>
               </label>
-              <textarea class="text-input" name="comment" placeholder="Your Message...">Your Message...</textarea>
-              <a href="#" class="btn"><span class="gradient"><input type="image" value="Submit" /></span></a>
+              <textarea  style="margin-top: 30px;" class="text-input" name="comment" placeholder="Lời nhắn của bạn...">Lời nhắn của bạn...</textarea>
+              <!-- <input type="button" value="Gửi"> -->
+              <div class="span3">
+						<a href="javaScript:sendContact()" class="btn"><span class="gradient">Gửi</span></a>
+					</div>
             </form>
           </div>
           
           <div class="span6 offset1">
-            <h1>Location on map</h1>
+            <h1>Bản đồ</h1>
             
             <figure class="map">
               <div class="wrapper">
-                <div class="shadow">Shadow</div>
-                <img src="<c:url value='/resources/img/ph/ph-map.png'/>" alt="Map"/>
+                <div id="map-canvas">
+                </div>
+                
               </div>
             </figure>
           </div>
@@ -36,20 +40,20 @@
         <div class="row top-spacing">
           <div class="span5">
           
-            <h1>About our branch</h1>
+            <h1>Địa chỉ chi nhánh</h1>
             
             <p>
-              Lorem ipsum dolor sit amet, con sectetur adpiscing elit. Ne Duis eu feugiat ma ed gna. Nunc quis elit erois. Integer velies lacinia leo. Sed elementum, est vitae eles em ens entum laci nia. Ne Duis eu feugiat maed gna. 
+              Trường ĐH Khoa học Tự nhiên, Nguyễn Văn Cừ, phường 4, Quận 5, Hồ Chí Minh, Việt Nam 
             </p>
           
           </div>
           
           <div class="span6 offset1">
             
-            <h1>Contact details</h1>
+            <h1>Thông tin liên hệ</h1>
             
             <p>
-              Hanoi, Michaellee. 888 North Main Street, Losagenles, Bratin. e Duis eu feugiat maed gna. Nunc quis elit erois. Integer velies lacinia leo. Sed elementum, est vitaee les em ens entum laci nia.
+              Trường ĐH Khoa học Tự nhiên, Nguyễn Văn Cừ, phường 4, Quận 5, Hồ Chí Minh, Việt Nam
             </p>
             
             <ul class="rr info clearfix">

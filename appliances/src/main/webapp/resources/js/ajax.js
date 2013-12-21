@@ -103,8 +103,9 @@ function callAjaxAddCompare(id) {
 		url : "/appliances/compare/add",
 		date : "id=" + id,
 		success : function(response) {
-			if(response)
-				makeToast("Đã thêm vào danh sách so sánh", 'success', 'top-right');
+			if (response)
+				makeToast("Đã thêm vào danh sách so sánh", 'success',
+						'top-right');
 			else
 				makeToast("Danh sách đầy", 'error', 'top-right');
 		}
@@ -257,4 +258,32 @@ function rate($id) {
 		}
 	});
 }
-
+/*******************************************************************************
+ * Thanh toan
+ */
+function checkOut() {
+	var shipfullname = $("input[name='shipfullname']").val();
+	var shipemail = $("input[name='shipemail']").val();
+	var shipadress = $("input[name='shipadress']").val();
+	var shipphone = $("input[name='shipphone']").val();
+	if (shipfullname == "" || shipemail == "" || shipadress == ""
+			|| shipphone == "")
+		makeToast("Vui lòng điền đủ thông tin giao hàng", 'warning',
+				'top-right');
+	else {
+		$.ajax({
+			type:'POST',
+			url:'/appliances/checkout/dochecout',
+			success:function(response)
+			{
+				if(response==null || response=="")
+					{
+						 window.location.href="/appliances/checkout/success";
+					}
+					
+				else
+					makeToast(response, 'error', 'top-right');
+			}
+		});
+	}
+}

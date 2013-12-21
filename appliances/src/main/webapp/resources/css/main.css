@@ -1,9 +1,9 @@
 /* ==========================================================================
    HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
    ========================================================================== */
-@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700);
+/* @import url(http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700);
 @import url(http://fonts.googleapis.com/css?family=Marck+Script);
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400);
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400); */
 html,
 button,
 input,
@@ -2353,4 +2353,11 @@ font-weight: bold;
 #userRate
 {
 	margin-left: 40px;
+}
+#map-canvas
+{
+	width: 500px;
+	height:350px;
+
+	}
 }

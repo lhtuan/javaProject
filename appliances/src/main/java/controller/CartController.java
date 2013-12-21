@@ -47,6 +47,7 @@ public class CartController {
 		Shoppingcartdetail cartDetail = new Shoppingcartdetail();
 		cartDetail.setProduct(productService.get(id));
 		cartDetail.setNumber(number);
+		cartDetail.setDeleted(false);
 		cart = addToCart(cart, cartDetail);
 		session.setAttribute("cart", cart);
 
