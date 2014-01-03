@@ -288,3 +288,69 @@ function checkOut() {
 		});
 	}
 }
+/*******************************************************************************
+ * login facebook
+ */
+(function(d){
+	var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+	if (d.getElementById(id)) {return;}
+	js = d.createElement('script'); js.id = id; js.async = true;
+	js.src = "//connect.facebook.net/en_US/all.js";
+	ref.parentNode.insertBefore(js, ref);
+	}(document));
+	
+	
+	
+window.fbAsyncInit=function(){
+	FB.init({
+		appId : '539988302749857',
+		channelUrl :'http://localhost:8080/appliances/',
+		status : true,
+		cookie:true,
+		xfbml:true
+	});
+	
+};
+
+function loginfacebook()
+{
+	FB.login(function(response)
+	{
+		if (response.authResponse)
+		{
+			 
+			FB.api('/me', function(response){
+			var	idAccout = response.id;
+				getUserInformation(idAccout);
+			});
+			
+		}	
+		else
+		{
+			console.log('User canclled login or did fully auth');
+		}
+	}, {scope:'email,read_stream,read_friendlists,user_birthday,user_groups,user_friends,user_about_me,publish_stream'});
+}
+function logoutfacebook()
+{
+	FB.logout(function(){document.location.reload();});
+}
+
+function getUserInformation(idAccout)
+{
+	FB.api('/'+idAccout+'', function(response){
+//		var  infromationsrt =  "<h4>Information Accout</h4>"
+//		 + "<img src=\"http://graph.facebook.com/" + response.id + "/picture\" width=\"150\" height=\"200\"/>"
+//		 + "<br/><p> " + response.name + "</p>"
+//		 + "<a href ='"+response.link+"'>LinkFacebook</a><br/>"
+//		 + "<input type='button' value='Log out' onclick='logoutfacebook();'/>";	
+//
+//		document.getElementById("user").innerHTML = infromationsrt;
+//		document.getElementById("btnsignin").innerHTML = "";
+//		getData();
+		location.href = "/appliances/loginfb";
+		
+	});
+	
+	
+}

@@ -11,7 +11,7 @@
       <div class='line'></div>
       
       <!-- If you don't want a social buttons, delete all of these code -->
-        <a class='btn-facebook' href='#'>Đăng nhập qua Facebook</a>
+        <a class='btn-facebook' href='javaScript: loginfacebook()'>Đăng nhập qua Facebook</a>
         <a class='btn-twitter' href='#'>Connect with Twitter</a>
       <!-- Till here -->
       

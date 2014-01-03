@@ -27,5 +27,10 @@ public class LoginController {
 		return "home";
  
 	}
-
+	@RequestMapping(value="/loginfb", method = RequestMethod.GET)
+	public String loginfb(ModelMap model) {
+ 
+		return "home";
+ 
+	}
 }
